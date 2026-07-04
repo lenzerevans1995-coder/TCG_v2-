@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="810" viewBox="0 0 1440 810" font-family="Segoe UI, Arial, sans-serif">
+  <!-- ============ CROWS TCG — STREAMLINED UI SHELL (Aria GUI skin) ============
+       Structure (STRICT NESTING):
+       svg
+       ├─ defs (shared gradients)
+       ├─ g#screen-home        — single-screen hub: PLAY + deck strip + nav
+       │   ├─ g#home-bg
+       │   ├─ g#home-topbar    (Aria: SectionSmall + ButtonIcon)
+       │   ├─ g#home-hero      (Aria: SectionBig + ButtonPrimaryGreen)
+       │   ├─ g#home-deckstrip (Aria: InventoryItemBig row)
+       │   └─ g#home-nav       (Aria: MainMenuItem column)
+       ├─ g#screen-decks       — deck builder skeleton
+       │   ├─ g#decks-bg
+       │   ├─ g#decks-list     (Aria: CategoryItemLeft column)
+       │   ├─ g#decks-grid     (Aria: InventoryItemBig grid = card pool)
+       │   └─ g#decks-side     (Aria: SectionBigRight = current deck)
+       └─ g#component-map      — Aria piece -> CROWS skin cheat sheet
+       Match screen is NOT here: see crows_board.svg (M1-M6 modules).
+       Fonts: menu chrome = Economica/Lato (ship with Aria, OFL);
+       card body = Patrick Hand; card titles = pack display font (TBD). -->
+
+  <defs>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e3438"/><stop offset="1" stop-color="#191d20"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#23282c"/><stop offset="1" stop-color="#15181b"/>
+    </linearGradient>
+    <linearGradient id="btnGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3f7a4f"/><stop offset="1" stop-color="#26492f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1440" height="810" fill="#0c0e10"/>
+
+  <!-- ================= SCREEN 1: HOME HUB (streamlined: one screen, no menu maze) ================= -->
+  <g id="screen-home" transform="translate(20,20)">
+    <g id="home-bg">
+      <rect width="680" height="560" rx="12" fill="url(#stone)" stroke="#3c4448"/>
+      <text x="10" y="-6" font-size="11" fill="#e08840">SCREEN: HOME — everything reachable in one click (Aria skin over CROWS stone)</text>
+    </g>
+
+    <g id="home-topbar" transform="translate(16,14)">
+      <!-- Aria: SectionSmall strip + ButtonIcon (settings) + currency Badge -->
+      <rect width="648" height="44" rx="8" fill="url(#panel)" stroke="#3c4448"/>
+      <text x="14" y="28" font-size="16" fill="#c8d0d4" font-weight="bold">CROWS</text>
+      <g id="topbar-currency" transform="translate(470,8)">
+        <rect width="98" height="28" rx="14" fill="#101416" stroke="#c9a84c"/>
+        <circle cx="16" cy="14" r="9" fill="#c9a84c"/>
+        <text x="34" y="19" font-size="12" fill="#c9a84c">1,250</text>
+      </g>
+      <g id="topbar-settings" transform="translate(600,4)">
+        <rect width="36" height="36" rx="8" fill="#101416" stroke="#5c6468"/>
+        <text x="18" y="24" font-size="14" fill="#8a9296" text-anchor="middle">⚙</text>
+      </g>
+      <text x="14" y="58" font-size="8" fill="#e08840">Aria: SectionSmall / Badge / ButtonIcon</text>
+    </g>
+
+    <g id="home-hero" transform="translate(16,80)">
+      <!-- Aria: SectionBig with key art + one primary CTA -->
+      <rect width="648" height="300" rx="12" fill="url(#panel)" stroke="#3c4448"/>
+      <text x="324" y="130" text-anchor="middle" font-size="13" fill="#5c6468">[ key art: crow roost, ink + watercolor ]</text>
+      <g id="hero-cta" transform="translate(204,220)">
+        <rect width="240" height="56" rx="12" fill="url(#btnGreen)" stroke="#84c9a0" stroke-width="2"/>
+        <text x="120" y="35" text-anchor="middle" font-size="20" fill="#eaf4ec" font-weight="bold">PLAY</text>
+      </g>
+      <text x="14" y="292" font-size="8" fill="#e08840">Aria: SectionBig + ButtonPrimaryGreen (recolored to CROWS green #26492f)</text>
+    </g>
+
+    <g id="home-deckstrip" transform="translate(16,396)">
+      <!-- Aria: InventoryItemBig x4 — active deck picker, aspect-pair color chips -->
+      <rect width="648" height="120" rx="10" fill="url(#panel)" stroke="#3c4448"/>
+      <text x="14" y="22" font-size="11" fill="#8a9296">MY DECKS</text>
+      <g id="deck-1" transform="translate(14,32)">
+        <rect width="146" height="72" rx="8" fill="#101416" stroke="#c9a84c" stroke-width="2"/>
+        <circle cx="22" cy="24" r="10" fill="#e8bf20"/><circle cx="46" cy="24" r="10" fill="#ad01bc"/>
+        <text x="14" y="60" font-size="10" fill="#c8d0d4">Divine/Occult</text>
+      </g>
+      <g id="deck-2" transform="translate(172,32)">
+        <rect width="146" height="72" rx="8" fill="#101416" stroke="#3c4448"/>
+        <circle cx="22" cy="24" r="10" fill="#b78131"/><circle cx="46" cy="24" r="10" fill="#00bd8f"/>
+        <text x="14" y="60" font-size="10" fill="#8a9296">Prosp/Boreal</text>
+      </g>
+      <g id="deck-3" transform="translate(330,32)">
+        <rect width="146" height="72" rx="8" fill="#101416" stroke="#3c4448"/>
+        <circle cx="22" cy="24" r="10" fill="#003eb4"/><circle cx="46" cy="24" r="10" fill="#ad01bc"/>
+        <text x="14" y="60" font-size="10" fill="#8a9296">Arcana/Occult</text>
+      </g>
+      <g id="deck-new" transform="translate(488,32)">
+        <rect width="146" height="72" rx="8" fill="#101416" stroke="#5c6468" stroke-dasharray="5 4"/>
+        <text x="73" y="44" text-anchor="middle" font-size="20" fill="#5c6468">+</text>
+      </g>
+    </g>
+
+    <g id="home-nav" transform="translate(16,528)">
+      <!-- Aria: MainMenuItem — flat single row, only 3 destinations -->
+      <g id="nav-decks"><rect width="208" height="24" rx="6" fill="#101416" stroke="#5c6468"/><text x="104" y="16" text-anchor="middle" font-size="11" fill="#c8d0d4">DECKS</text></g>
+      <g id="nav-collection" transform="translate(220,0)"><rect width="208" height="24" rx="6" fill="#101416" stroke="#5c6468"/><text x="104" y="16" text-anchor="middle" font-size="11" fill="#c8d0d4">COLLECTION</text></g>
+      <g id="nav-trials" transform="translate(440,0)"><rect width="208" height="24" rx="6" fill="#101416" stroke="#5c6468"/><text x="104" y="16" text-anchor="middle" font-size="11" fill="#c8d0d4">TRIALS</text></g>
+    </g>
+  </g>
+
+  <!-- ================= SCREEN 2: DECK BUILDER (skeleton) ================= -->
+  <g id="screen-decks" transform="translate(740,20)">
+    <g id="decks-bg">
+      <rect width="680" height="560" rx="12" fill="url(#stone)" stroke="#3c4448"/>
+      <text x="10" y="-6" font-size="11" fill="#e08840">SCREEN: DECK BUILDER — pool left, deck right (v1 layout kept, Aria skin)</text>
+    </g>
+
+    <g id="decks-list" transform="translate(16,14)">
+      <!-- Aria: CategoryItemLeft — aspect filter column -->
+      <rect width="120" height="532" rx="8" fill="url(#panel)" stroke="#3c4448"/>
+      <text x="60" y="20" text-anchor="middle" font-size="9" fill="#8a9296">ASPECTS</text>
+      <g id="aspect-filters" transform="translate(10,30)">
+        <g><rect width="100" height="30" rx="6" fill="#101416" stroke="#e8bf20"/><text x="50" y="20" text-anchor="middle" font-size="10" fill="#e8bf20">DIVINE</text></g>
+        <g transform="translate(0,38)"><rect width="100" height="30" rx="6" fill="#101416" stroke="#ad01bc"/><text x="50" y="20" text-anchor="middle" font-size="10" fill="#ad01bc">OCCULT</text></g>
+        <g transform="translate(0,76)"><rect width="100" height="30" rx="6" fill="#101416" stroke="#3c4448"/><text x="50" y="20" text-anchor="middle" font-size="10" fill="#5c6468">ITEMS</text></g>
+      </g>
+      <text x="10" y="520" font-size="8" fill="#e08840">Aria: CategoryItemLeft</text>
+    </g>
+
+    <g id="decks-grid" transform="translate(148,14)">
+      <!-- Aria: InventoryItemBig grid = card pool (3x4 shown) -->
+      <rect width="336" height="532" rx="8" fill="url(#panel)" stroke="#3c4448"/>
+      <g id="pool-cards" transform="translate(14,14)" fill="#101416" stroke="#5c6468">
+        <rect width="94" height="120" rx="6"/><rect x="107" width="94" height="120" rx="6"/><rect x="214" width="94" height="120" rx="6"/>
+        <rect y="130" width="94" height="120" rx="6"/><rect x="107" y="130" width="94" height="120" rx="6"/><rect x="214" y="130" width="94" height="120" rx="6"/>
+        <rect y="260" width="94" height="120" rx="6"/><rect x="107" y="260" width="94" height="120" rx="6"/><rect x="214" y="260" width="94" height="120" rx="6"/>
+        <rect y="390" width="94" height="112" rx="6"/><rect x="107" y="390" width="94" height="112" rx="6"/><rect x="214" y="390" width="94" height="112" rx="6"/>
+      </g>
+    </g>
+
+    <g id="decks-side" transform="translate(496,14)">
+      <!-- Aria: SectionBigRight — current deck list + counts -->
+      <rect width="168" height="532" rx="8" fill="url(#panel)" stroke="#c9a84c"/>
+      <text x="84" y="22" text-anchor="middle" font-size="11" fill="#c9a84c">DECK 18/20</text>
+      <g id="deck-rows" transform="translate(12,34)">
+        <rect width="144" height="20" rx="4" fill="#101416" stroke="#3c4448"/>
+        <rect y="26" width="144" height="20" rx="4" fill="#101416" stroke="#3c4448"/>
+        <rect y="52" width="144" height="20" rx="4" fill="#101416" stroke="#3c4448"/>
+        <rect y="78" width="144" height="20" rx="4" fill="#101416" stroke="#3c4448"/>
+        <text x="72" y="120" text-anchor="middle" font-size="9" fill="#5c6468">…</text>
+      </g>
+      <g id="deck-save" transform="translate(12,492)">
+        <rect width="144" height="30" rx="8" fill="url(#btnGreen)" stroke="#84c9a0"/>
+        <text x="72" y="20" text-anchor="middle" font-size="12" fill="#eaf4ec">SAVE</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= COMPONENT MAP: Aria piece -> CROWS skin ================= -->
+  <g id="component-map" transform="translate(20,610)">
+    <rect width="1400" height="180" rx="12" fill="#15181b" stroke="#3c4448"/>
+    <text x="14" y="24" font-size="12" fill="#e08840" font-weight="bold">ARIA → CROWS COMPONENT MAP (recolor Aria sprites: brown→stone #23282c, gold trim→#c9a84c, green CTA→#26492f)</text>
+    <g id="map-table" transform="translate(14,40)" font-size="10" fill="#c8d0d4">
+      <text y="14">Panels: SimplePanel/SectionBig/SectionSmall = all stone panels · FrameGold = selected/legendary highlight · Popup = dialogs · InnerShadow on every well</text>
+      <text y="34">Buttons: ButtonPrimaryGreen = PLAY/SAVE · ButtonPrimaryRed = concede/delete · ButtonIcon = settings/close · MainMenuItem = nav row · InventoryItemBig = deck/card tiles</text>
+      <text y="54">Bars: BarGoldFrame = Roost life orbs frame · BarSimple = XP/progress · Slider/Scrollbar = settings + lists · Bubble = action pips (3/turn)</text>
+      <text y="74">Selection: SelectionGlow + FrameSelection = drag targets and legal-play highlight (fixes v1's invisible-highlight class of bugs)</text>
+      <text y="94">Fonts: Economica = headings, Lato = labels/body (both ship with Aria as TMP SDF) · Patrick Hand = card rules text · pack display font = card names (TBD)</text>
+      <text y="114">Cursors: Aria Textures/Cursors · Icons: Aria 32-512px generic + CROWS Icons/ for game semantics (never mix the two families on one element)</text>
+      <text y="134" fill="#8a9296">Match screen chrome lives in crows_board.svg (M1-M6). This sheet governs OUT-OF-MATCH screens only.</text>
+    </g>
+  </g>
+</svg>

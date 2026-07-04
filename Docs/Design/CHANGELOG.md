@@ -4,6 +4,30 @@ Continues the process rules from v1 (repo lenzerevans1995-coder/CCG, tag
 v1-prototype): commit+push every chunk; SVG mockups before layout code;
 art prompts exported as CSV with the CROWS style tail.
 
+## v2.1.0 — 2026-07-04 (art decode + generation pipeline)
+
+- Full CROWS pack decode: 04_Art_Catalog.md (frames/backs/artwork/
+  fonts), 05_Icon_Labels.csv (icon semantics via docx perceptual-hash
+  matching — icons PRECEDE their rule text; 13 = blank token, user-
+  confirmed), catalog/frame_palette.json (two colors per frame,
+  CHAMPION + UNIVERSAL manually overridden).
+- Generated: 24 aspect tokens (circle+square per frame, nested SVG
+  sources in tokens_svg/) + 5 rarity backs recolored from CARD BACK
+  VERSE 4 (common/uncommon/rare/epic/mythic duotone hue-shift).
+- Card-art batch: 03_Card_Art_Prompts_BATCH.txt — 188 lines (94
+  subjects x 2 variations: 34 equipment, 20 champions, 40 minions),
+  one prompt per line for Firefly batch, square 1:1, CROWS style tail;
+  manifest CSV maps line -> asset name for renaming downloads. Firefly
+  downloads land in Generated/ (session watcher auto-processes).
+- Fonts: no credits shipped with the pack (itch: clockworkraven).
+  Body = handwritten print, closest free = Patrick Hand (OFL).
+  Titles = distressed display (NOT Ultra), nearest-match TBD.
+  Aria ships Economica + Lato TMP SDFs for menu chrome.
+- Aria GUI (Assets/Honeti/AriaGUI) inventoried: sprite kit, no code —
+  98 prefabs (buttons/panels/bars/texts), 1698 textures, 1 demo scene.
+  UI shell mockup: mockups/crows_ui_shell.svg (HOME hub + deck builder
+  + Aria->CROWS component map; match screen stays in crows_board.svg).
+
 ## v2.0.0 — 2026-07-04 (project bootstrap)
 
 - Fresh project ("My project", Unity 6000.5.2f1, URP) chosen over the v1
