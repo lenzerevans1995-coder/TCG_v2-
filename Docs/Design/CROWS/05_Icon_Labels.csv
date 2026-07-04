@@ -1,0 +1,80 @@
+file,label,category,confidence,notes
+0.png,d8,dice,high,octahedron die face showing 8
+1.png,d12,dice,high,dodecahedron die
+2.png,d20,dice,high,icosahedron die
+3.png,d10,dice,high,pentagonal trapezohedron die
+4.png,champion,card_type,high,gold crown
+5.png,unique,keyword,high,gold skull medal ribbon
+6.png,d4,dice,high,tetrahedron die
+7.png,d6,dice,high,cube die
+8.png,search,keyword,high,magnifying glass
+9.png,draw,keyword,medium,two overlapping cards
+10.png,discard,keyword,high,card with down arrow
+11.png,continuous,card_type,high,infinity symbol
+12.png,equipment,card_type,low,hash-matched dist 48 - verify visually
+13.png,blank_token,token,high,USER-CONFIRMED blank grey/black circle for generic counters
+14.png,minion,card_type,high,monster face
+15.png,strike,keyword,high,fist
+16.png,action,resource,high,star (action pip)
+17.png,consume,keyword,high,vortex (Consumed zone)
+18.png,sacrifice,keyword,high,dagger
+19.png,armor,stat,high,shield (Armor Class)
+20.png,saving,keyword,high,rune shield (saving throw)
+21.png,prepare,keyword,medium,curled arrow - verify
+22.png,temporary,keyword,high,hourglass
+23.png,unknown_spear,unlabeled,low,blue spear/staff
+24.png,unknown_red_dagger,unlabeled,low,red dagger
+25.png,unknown_tarot,unlabeled,low,tarot cards
+26.png,unknown_tree,unlabeled,low,tree
+27.png,reroll,keyword,high,die with circular arrow (cut by no-dice ruling)
+28.png,unknown_purple_dagger,unlabeled,low,purple dagger
+29.png,unknown_green_hand,unlabeled,low,green hand
+31.png,aspect_arcana,aspect,high,blue book
+34.png,aspect_gale,aspect,high,wind swirls
+35.png,unknown_beast,unlabeled,low,beast head
+36.png,unknown_wood_shield,unlabeled,low,wooden shield
+37.png,unknown_coin_purse,unlabeled,low,coin purse
+38.png,unknown_flame_drop,unlabeled,low,flame drop
+39.png,unknown_water_drop,unlabeled,low,water drop
+40.png,aspect_prospection,aspect,high,scales
+41.png,creature,card_type,high,dark helm
+42.png,aspect_divine,aspect,high,sun
+43.png,unknown_indigo_skull,unlabeled,low,indigo skull
+44.png,life,stat,high,black heart
+45.png,aspect_land,aspect,high,mountain and leaf
+46.png,aspect_dusk,aspect,high,pink crescent moon
+47.png,aspect_might,aspect,high,red sword
+48.png,unknown_ice,unlabeled,low,ice crystals
+49.png,unknown_triangle_spiral,unlabeled,low,blue triangle spiral
+50.png,aspect_occult,aspect,high,purple horned skull
+51.png,unknown_frost_star,unlabeled,low,frost star
+52.png,unknown_red_heart,unlabeled,low,red heart (alt life?)
+53.png,aspect_heat,aspect,high,orange flame
+54.png,aspect_boreal,aspect,high,teal drops
+55.png,unknown_backpack,unlabeled,low,backpack (items?)
+57.png,unknown_kite_shield,unlabeled,low,gold/white kite shield
+83.png,boon_sharpened,boon,high,cyan blade star
+84.png,ailment_trauma,ailment,high,red crossed bones
+85.png,boon_lucky,boon,high,clover
+86.png,ailment_distress,ailment,high,purple anguished face
+87.png,boon_enraged,boon,high,fiery skull
+88.png,ailment_burning,ailment,high,burning skull
+89.png,boon_blessed,boon,high,yellow rays
+90.png,boon_quickened,boon,high,cyan bird
+91.png,boon_inspired,boon,high,radiant fist
+92.png,ailment_entangled,ailment,high,green snare
+93.png,ailment_stunned,ailment,high,dizzy stars
+94.png,boon_hunting,boon,high,green target
+95.png,ailment_smitten,ailment,high,lightning face
+96.png,ailment_chilled,ailment,high,snowflake
+99.png,ailment_dazed,ailment,high,purple spiral
+100.png,boon_focused,boon,high,purple eye
+101.png,ailment_sleeping,ailment,high,purple sleeping mound
+102.png,boon_empowered,boon,high,purple empowered figure
+103.png,ailment_cursed,ailment,high,pentagram eye
+104.png,boon_hidden,boon,high,purple hood
+105.png,ailment_poisoned,ailment,high,poison drop skull
+106.png,boon_advantage,boon,high,green hexagon star (retranslate - no dice)
+107.png,ailment_disadvantage,ailment,high,red hexagon skull (retranslate - no dice)
+108.png,ailment_bleeding,ailment,high,red cut wound
+spritesheet.png,spritesheet,sheet,high,combined sheet of the numbered icons

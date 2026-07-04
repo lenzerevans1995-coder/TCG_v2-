@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <g id="token_gale_square">
+    <g id="base">
+      <rect x="14" y="14" width="484" height="484" rx="56" fill="#0c0d10"/>
+      <rect x="36" y="36" width="440" height="440" rx="44" fill="#8cc908"/>
+      <rect x="62" y="62" width="388" height="388" rx="34" fill="#0c0d10"/>
+      <rect x="74" y="74" width="364" height="364" rx="28" fill="#007a48"/>
+    </g>
+    <g id="inner_detail">
+      <rect x="106" y="106" width="300" height="300" rx="20" fill="none" stroke="#8cc908" stroke-opacity="0.35" stroke-width="7"/>
+    </g>
+  </g>
+</svg>

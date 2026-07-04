@@ -1,0 +1,50 @@
+{
+ "ARCANA": {
+  "border": "#003eb4",
+  "panel": "#020b60"
+ },
+ "BOREAL": {
+  "border": "#00bd8f",
+  "panel": "#007470"
+ },
+ "CHAMPION": {
+  "border": "#b9c6cc",
+  "panel": "#365059"
+ },
+ "DIVINE": {
+  "border": "#e8bf20",
+  "panel": "#a98700"
+ },
+ "DUSK": {
+  "border": "#5f02b7",
+  "panel": "#170661"
+ },
+ "GALE": {
+  "border": "#8cc908",
+  "panel": "#007a48"
+ },
+ "HEAT": {
+  "border": "#d34600",
+  "panel": "#862700"
+ },
+ "LAND": {
+  "border": "#00721b",
+  "panel": "#003b1e"
+ },
+ "MIGHT": {
+  "border": "#9e052d",
+  "panel": "#53022a"
+ },
+ "OCCULT": {
+  "border": "#ad01bc",
+  "panel": "#3c015f"
+ },
+ "PROSPECT": {
+  "border": "#b78131",
+  "panel": "#664315"
+ },
+ "UNIVERSAL": {
+  "border": "#9aa4a8",
+  "panel": "#17181b"
+ }
+}

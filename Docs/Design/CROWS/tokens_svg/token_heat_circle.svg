@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <g id="token_heat_circle">
+    <g id="base">
+      <circle cx="256" cy="256" r="244" fill="#0c0d10"/>
+      <circle cx="256" cy="256" r="222" fill="#d34600"/>
+      <circle cx="256" cy="256" r="196" fill="#0c0d10"/>
+      <circle cx="256" cy="256" r="184" fill="#862700"/>
+    </g>
+    <g id="inner_detail">
+      <circle cx="256" cy="256" r="150" fill="none" stroke="#d34600" stroke-opacity="0.35" stroke-width="7"/>
+    </g>
+  </g>
+</svg>
