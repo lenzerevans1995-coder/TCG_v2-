@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080ba8f3b7a08e34ba0648e5340f9bf4, type: 3}
+  m_Name: GameplayData
+  m_EditorClassIdentifier: 
+  hp_start: 30
+  mana_start: 0
+  mana_per_turn: 0
+  mana_max: 30
+  cards_start: 4
+  cards_per_turn: 0
+  cards_max: 10
+  turn_duration: 60
+  second_bonus: {fileID: 0}
+  mulligan: 1
+  deck_size: 20
+  deck_duplicate_max: 2
+  sell_ratio: 0.8
+  ai_type: 10
+  ai_level: 10
+  free_decks:
+  - {fileID: 11400000, guid: d1b2c3d4e5f6071829304a5b6c7d0001, type: 2}
+  - {fileID: 11400000, guid: d1b2c3d4e5f6071829304a5b6c7d0002, type: 2}
+  starter_decks:
+  - {fileID: 11400000, guid: d1b2c3d4e5f6071829304a5b6c7d0001, type: 2}
+  - {fileID: 11400000, guid: d1b2c3d4e5f6071829304a5b6c7d0002, type: 2}
+  ai_decks:
+  - {fileID: 11400000, guid: d1b2c3d4e5f6071829304a5b6c7d0001, type: 2}
+  - {fileID: 11400000, guid: d1b2c3d4e5f6071829304a5b6c7d0002, type: 2}
+  arena_list:
+  - CCG_Game3D
+  test_deck: {fileID: 11400000, guid: d1b2c3d4e5f6071829304a5b6c7d0001, type: 2}
+  test_deck_ai: {fileID: 11400000, guid: d1b2c3d4e5f6071829304a5b6c7d0002, type: 2}
+  ai_vs_ai: 0

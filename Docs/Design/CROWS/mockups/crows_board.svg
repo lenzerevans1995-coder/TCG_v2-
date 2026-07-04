@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" font-family="Segoe UI, Arial, sans-serif">
+  <!-- ============ CROWS TCG — LoR-STYLE ARENA v2 (user ruling) ============
+       ONE UNIT ROW PER SIDE (two rows total). Champions FIGHT IN THE ROW
+       alongside minions. Spells cast + resolve (no board presence).
+       Equipment is CAST ONTO units and shows as ICONS on the card.
+       Continuous/temporary CROWS cards live in the row like LoR landmarks.
+       Board art generated in MODULES (M1-M6, orange dashed borders). -->
+
+  <defs>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e3438"/><stop offset="1" stop-color="#191d20"/></linearGradient>
+    <linearGradient id="mat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23282c"/><stop offset="1" stop-color="#15181b"/></linearGradient>
+  </defs>
+
+  <!-- MODULE 1: board_base -->
+  <rect width="960" height="540" fill="url(#stone)"/>
+  <text x="12" y="20" font-size="9" fill="#e08840">M1 board_base — full-bleed stone texture, quiet</text>
+
+  <!-- MODULE 4: corner dioramas (swap per aspect pair) -->
+  <g stroke="#e08840" stroke-dasharray="5 4" fill="#26221c" opacity="0.9">
+    <rect x="0" y="0" width="140" height="110"/>
+    <rect x="820" y="0" width="140" height="110"/>
+    <rect x="0" y="430" width="140" height="110"/>
+    <rect x="820" y="430" width="140" height="110"/>
+  </g>
+  <g font-size="8" fill="#e08840" text-anchor="middle">
+    <text x="70" y="60">M4 crow roost</text>
+    <text x="890" y="60">M4 candles</text>
+    <text x="70" y="490">M4 grimoires</text>
+    <text x="890" y="490">M4 bones</text>
+  </g>
+
+  <!-- MODULE 2: playmat center — two quiet row bands -->
+  <rect x="120" y="66" width="600" height="408" rx="18" fill="url(#mat)" stroke="#e08840" stroke-dasharray="5 4" stroke-width="1.5"/>
+  <text x="420" y="82" text-anchor="middle" font-size="9" fill="#e08840">M2 playmat_center — carved border; interior = two faint row bands; SWAP PER ASPECT PAIR</text>
+
+  <!-- MODULE 6: center emblem between the rows -->
+  <g>
+    <polygon points="420,262 440,269 447,289 440,309 420,316 400,309 393,289 400,269" fill="#0c0e10" stroke="#6a7278" stroke-width="2"/>
+    <text x="420" y="336" text-anchor="middle" font-size="7" fill="#e08840">M6 octagon emblem (card-back motif)</text>
+  </g>
+
+  <!-- ===== UI OVERLAY (engine chrome over the art) ===== -->
+
+  <!-- ENEMY UNIT ROW: 6 sockets (M5), champion is a UNIT in the row -->
+  <g>
+    <g fill="#101416" stroke="#5c6468" stroke-dasharray="4 3">
+      <rect x="146" y="108" width="80" height="112" rx="8"/>
+      <rect x="238" y="108" width="80" height="112" rx="8"/>
+      <rect x="330" y="108" width="80" height="112" rx="8"/>
+      <rect x="514" y="108" width="80" height="112" rx="8"/>
+      <rect x="606" y="108" width="80" height="112" rx="8"/>
+    </g>
+    <!-- a played enemy CHAMPION card (champions are units, several allowed) -->
+    <rect x="422" y="106" width="80" height="112" rx="8" fill="#141014" stroke="#7c4a4a" stroke-width="2"/>
+    <text x="462" y="152" text-anchor="middle" font-size="7" fill="#c9848a">CHAMPION</text>
+    <text x="462" y="162" text-anchor="middle" font-size="7" fill="#c9848a">(unit card)</text>
+    <circle cx="434" cy="208" r="8" fill="#0c0e10" stroke="#c9a84c" stroke-width="1.5"/>
+    <circle cx="454" cy="208" r="8" fill="#0c0e10" stroke="#c9a84c" stroke-width="1.5"/>
+    <text x="492" y="212" font-size="6.5" fill="#c9a84c">2 equip icons</text>
+    <text x="700" y="170" font-size="7" fill="#8a9296" transform="rotate(90 700 170)">UNIT ROW x6</text>
+  </g>
+
+  <!-- PLAYER UNIT ROW -->
+  <g>
+    <g fill="#101416" stroke="#5c6468" stroke-dasharray="4 3">
+      <rect x="146" y="320" width="80" height="112" rx="8"/>
+      <rect x="238" y="320" width="80" height="112" rx="8"/>
+      <rect x="330" y="320" width="80" height="112" rx="8"/>
+      <rect x="514" y="320" width="80" height="112" rx="8"/>
+      <rect x="606" y="320" width="80" height="112" rx="8"/>
+    </g>
+    <rect x="422" y="320" width="80" height="112" rx="8" fill="#101614" stroke="#4a6a5a" stroke-width="2"/>
+    <text x="462" y="366" text-anchor="middle" font-size="7" fill="#84c9a0">CHAMPION</text>
+    <text x="462" y="376" text-anchor="middle" font-size="7" fill="#84c9a0">(unit card)</text>
+    <circle cx="434" cy="422" r="8" fill="#0c0e10" stroke="#c9a84c" stroke-width="1.5"/>
+    <circle cx="454" cy="422" r="8" fill="#0c0e10" stroke="#c9a84c" stroke-width="1.5"/>
+    <!-- a minion with an attached equipment icon -->
+    <rect x="238" y="320" width="80" height="112" rx="8" fill="#16181c" stroke="#84c9a0"/>
+    <text x="278" y="368" text-anchor="middle" font-size="7" fill="#c8d0d4">minion</text>
+    <circle cx="250" cy="422" r="8" fill="#0c0e10" stroke="#c9a84c" stroke-width="1.5"/>
+    <text x="286" y="426" font-size="6" fill="#c9a84c">equip icon</text>
+  </g>
+
+  <!-- MODULE 3: right rail — deck / discard / consumed per side -->
+  <g>
+    <rect x="732" y="66" width="78" height="408" rx="10" fill="#1d2226" stroke="#e08840" stroke-dasharray="5 4"/>
+    <text x="771" y="80" text-anchor="middle" font-size="8" fill="#e08840">M3 rail (mirrored L)</text>
+    <g font-size="6.5" fill="#8a9296" text-anchor="middle">
+      <rect x="748" y="90" width="46" height="60" rx="4" fill="#101416" stroke="#5c6468"/><text x="771" y="160">ENEMY DECK</text>
+      <rect x="748" y="170" width="46" height="60" rx="4" fill="#101416" stroke="#3c4448"/><text x="771" y="240">DISC · CONS</text>
+      <rect x="748" y="290" width="46" height="60" rx="4" fill="#101416" stroke="#5c6468"/><text x="771" y="360">YOUR DECK</text>
+      <rect x="748" y="380" width="46" height="60" rx="4" fill="#101416" stroke="#3c4448"/><text x="771" y="450">DISC · CONS</text>
+    </g>
+  </g>
+
+  <!-- THE ROOST (nexus): per-side life orb, the win target -->
+  <g text-anchor="middle">
+    <circle cx="82" cy="120" r="26" fill="#141014" stroke="#7c4a4a" stroke-width="2.5"/>
+    <text x="82" y="118" font-size="11" fill="#c9848a" font-weight="bold">30</text>
+    <text x="82" y="131" font-size="6" fill="#8a9296">ENEMY ROOST</text>
+    <circle cx="82" cy="420" r="26" fill="#101614" stroke="#4a6a5a" stroke-width="2.5"/>
+    <text x="82" y="418" font-size="11" fill="#84c9a0" font-weight="bold">30</text>
+    <text x="82" y="431" font-size="6" fill="#8a9296">YOUR ROOST</text>
+  </g>
+
+  <!-- left rail: ACTION pips (3/turn) -->
+  <g>
+    <rect x="110" y="66" width="0" height="0"/>
+    <g font-size="7" fill="#8a9296" text-anchor="middle">
+      <circle cx="60" cy="180" r="8" fill="#101416" stroke="#7c4a4a"/>
+      <circle cx="82" cy="180" r="8" fill="#101416" stroke="#7c4a4a"/>
+      <circle cx="104" cy="180" r="8" fill="#101416" stroke="#7c4a4a"/>
+      <text x="82" y="202">ENEMY ACTIONS</text>
+      <circle cx="60" cy="352" r="8" fill="#84c9a0"/>
+      <circle cx="82" cy="352" r="8" fill="#84c9a0"/>
+      <circle cx="104" cy="352" r="8" fill="#101416" stroke="#4a6a5a"/>
+      <text x="82" y="374">YOUR ACTIONS 2/3</text>
+    </g>
+  </g>
+
+  <!-- pass button -->
+  <circle cx="884" cy="270" r="34" fill="#15181b" stroke="#c9a84c" stroke-width="2.5"/>
+  <text x="884" y="266" text-anchor="middle" font-size="10" fill="#c9a84c" font-weight="bold">PASS</text>
+  <text x="884" y="280" text-anchor="middle" font-size="7" fill="#8a9296">(end turn)</text>
+
+  <!-- spell cast demo: from hand, resolves center-stage, no board slot -->
+  <g opacity="0.85">
+    <rect x="352" y="470" width="52" height="66" rx="5" fill="#1a1420" stroke="#8a6ac9"/>
+    <path d="M378 470 C 390 420, 410 370, 420 316" stroke="#8a6ac9" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+    <text x="330" y="464" font-size="7" fill="#8a6ac9">SPELL: cast -> resolves center-stage -> discard (no slot)</text>
+  </g>
+
+  <!-- hand fan -->
+  <rect x="290" y="486" width="380" height="54" rx="8" fill="#101416" opacity="0.6"/>
+  <text x="480" y="518" text-anchor="middle" font-size="9" fill="#8a9296">HAND FAN — draw 4/turn, discard remainder at end of turn</text>
+
+  <text x="12" y="534" font-size="7" fill="#e08840">M5 sockets: ONE uniform unit socket x12 (champions are unit CARDS, several per deck, no fixed seat). THE ROOST = player life orb (nexus). Equipment = icons on units; continuous cards sit IN the row like landmarks.</text>
+</svg>
