@@ -1,0 +1,12 @@
+line,name,size
+1,board_base,2048x1152
+2,board_playmat_center,2048x1536
+3,board_rail_side,1024x2048
+4,board_corner_crow_roost,1024x1024
+5,board_corner_candles,1024x1024
+6,board_corner_tomes,1024x1024
+7,board_corner_bones,1024x1024
+8,slot_field_socket,1024x1024
+9,slot_equip_socket,1024x1024
+10,slot_roost_orb,1024x1024
+11,board_center_emblem,1024x1024

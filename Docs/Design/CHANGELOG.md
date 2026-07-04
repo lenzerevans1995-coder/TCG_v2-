@@ -1,5 +1,27 @@
 # CROWS TCG — Changelog
 
+## v2.2.0 — 2026-07-04 (gritty restyle + generation tooling)
+
+- ART STYLE RE-RULED (user): gritty graphic novel — coarse gestural
+  linework, dry-brush ink, jagged edges, sponge-stippled gradients,
+  desaturated greys/blacks + ONE neon glow accent per aspect (dusk =
+  magenta/neon purple per user reference); backgrounds always themed,
+  never empty. Supersedes the ink-storybook tail for GENERATED art
+  (pack frames/icons unchanged).
+- 03_Card_Art_Prompts_BATCH.txt regenerated in the new style (188
+  lines; verified: line 1 render matches the reference dead-on).
+  Old-style downloads parked in Generated/_oldstyle.
+- 02_Board_Art_Prompts_v3.csv (+ _BATCH.txt + manifest): 11 board
+  modules restyled to match; Roost orb socket prompt added, ratios
+  noted per module (base/playmat WIDE, rail TALL, rest SQUARE).
+- import_generated.py: renames firefly_*_<line>_var<V>.png downloads
+  against the manifest into Assets/CrowsTCG/Art/Generated (dry-run
+  default, --apply to move). Verified on the first download.
+- Fonts landed in Assets/CrowsTCG/Fonts: PatrickHand-Regular (OFL,
+  card body) + Ultra-Regular (Apache, docx heading font / title
+  fallback), licenses included.
+
+
 Continues the process rules from v1 (repo lenzerevans1995-coder/CCG, tag
 v1-prototype): commit+push every chunk; SVG mockups before layout code;
 art prompts exported as CSV with the CROWS style tail.
