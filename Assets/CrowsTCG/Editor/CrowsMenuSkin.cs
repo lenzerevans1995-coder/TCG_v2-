@@ -10,21 +10,18 @@ namespace CrowsTCG.EditorTools
 {
     /// <summary>
     /// Rebuilds the kit Menu scene's visual layer per Docs/Design/CROWS/mockups/crows_ui_shell.svg
-    /// (user-approved). Kit panels keep their logic; PlayPanel gets the CROWS home hub on top.
+    /// using Aria GUI's NATIVE fantasy art (velvet+gold buttons, textured backdrop, gold frames).
+    /// RULES: colored Aria sprites stay white-tinted (dark multiply kills them); only Aria's
+    /// WHITE tintable sprites (SimplePanel/SectionBig/Badge/PanelCaro) get palette tints.
     /// Idempotent: re-running deletes and rebuilds the CROWS layer.
     /// </summary>
     public static class CrowsMenuSkin
     {
-        // CROWS stone palette (from the approved mockup)
-        static readonly Color BG = Hex("#191d20");
-        static readonly Color PANEL = Hex("#23282c");
-        static readonly Color INK = Hex("#101416");
-        static readonly Color STROKE = Hex("#3c4448");
+        static readonly Color TINT_PANEL = Hex("#23282c");   // stone tint for white tintable sprites
+        static readonly Color TINT_BAR = Hex("#2c3236");
         static readonly Color GOLD = Hex("#c9a84c");
-        static readonly Color GREEN = Hex("#2f5c3a");
-        static readonly Color GREEN_EDGE = Hex("#84c9a0");
-        static readonly Color TEXT = Hex("#c8d0d4");
-        static readonly Color TEXT_DIM = Hex("#8a9296");
+        static readonly Color CREAM = Hex("#e8dcc0");        // label color on velvet buttons
+        static readonly Color TEXT_DIM = Hex("#9aa4a8");
 
         const string ARIA = "Assets/Honeti/AriaGUI/";
         const string SCENE = "Assets/TcgEngine/Scenes/Menu/Menu.unity";
@@ -36,28 +33,36 @@ namespace CrowsTCG.EditorTools
             var canvas = GameObject.Find("UICanvas");
             if (canvas == null) { Debug.LogError("CROWS: UICanvas not found"); return; }
 
-            // ---- idempotency: clear previous runs ----
+            // ---- idempotency ----
             Kill(canvas.transform, "CrowsBackground");
             var playPanel = canvas.transform.Find("PlayPanel");
             if (playPanel != null) Kill(playPanel, "CrowsHome");
 
-            // ---- full-screen stone background, first sibling so everything draws over it ----
-            var bg = MakeImage(canvas.transform, "CrowsBackground", null, BG);
+            // ---- Aria textured backdrop, first sibling ----
+            var bg = MakeImage(canvas.transform, "CrowsBackground", Sprite(ARIA + "Textures/Misc/Background.png"), Color.white);
             Stretch(bg.rectTransform);
+            bg.type = Image.Type.Simple;
             bg.transform.SetSiblingIndex(0);
             bg.raycastTarget = false;
 
-            // ---- kit chrome off: our topbar replaces it ----
+            // ---- kit chrome off: hide with transparent CanvasGroup, NEVER SetActive(false) —
+            // inactive objects skip Awake, their singletons never register, MainMenu NREs ----
             var kitTopBar = canvas.transform.Find("TopBar");
-            if (kitTopBar != null) kitTopBar.gameObject.SetActive(false);
+            if (kitTopBar != null) HideKeepAlive(kitTopBar.gameObject);
 
             // ---- home hub over PlayPanel ----
             if (playPanel != null)
             {
-                // hide kit's own PlayPanel chrome, keep the panel logic alive
                 foreach (Transform child in playPanel)
-                    if (child.name != "CrowsHome")
-                        child.gameObject.SetActive(false);
+                {
+                    if (child.name == "CrowsHome")
+                        continue;
+                    // UIPanel children manage their own visibility; hide only plain containers
+                    if (child.GetComponent<TcgEngine.UI.UIPanel>() == null)
+                        HideKeepAlive(child.gameObject);
+                    else
+                        child.gameObject.SetActive(true);
+                }
 
                 var home = new GameObject("CrowsHome", typeof(RectTransform));
                 home.transform.SetParent(playPanel, false);
@@ -78,35 +83,42 @@ namespace CrowsTCG.EditorTools
 
         static void BuildTopbar(Transform parent, CrowsMenuActions actions)
         {
-            // flat stone plate + stroke (dark tints kill Aria's colored sprites — keep sprites near-white or none)
-            var bar = MakePanel(parent, "Topbar");
-            Anchor(bar.rectTransform, 0f, 1f, 1f, 1f, new Vector2(20, -64), new Vector2(-20, -12));
+            // SectionBig is a WHITE tintable band with hairline edges — made for this
+            var bar = MakeImage(parent, "Topbar", Sprite(ARIA + "Textures/Panels/SectionBig.png"), TINT_BAR);
+            Anchor(bar.rectTransform, 0f, 1f, 1f, 1f, new Vector2(0, -72), new Vector2(0, -8));
+            bar.type = Image.Type.Sliced;
+            bar.raycastTarget = false;
 
-            var title = MakeText(bar.transform, "Title", "CROWS", 30, GOLD, EconomicaBold());
-            Anchor(title.rectTransform, 0f, 0f, 0f, 1f, new Vector2(18, 0), new Vector2(220, 0));
+            var title = MakeText(bar.transform, "Title", "CROWS", 34, GOLD, EconomicaBold());
+            Anchor(title.rectTransform, 0f, 0f, 0f, 1f, new Vector2(28, 0), new Vector2(260, 0));
             title.alignment = TextAlignmentOptions.MidlineLeft;
 
-            var settings = MakeButton(bar.transform, "SettingsButton", "", 22, INK, TEXT_DIM, null);
-            AddStroke(settings.image, STROKE);
-            Anchor(((RectTransform)settings.transform), 1f, 0.5f, 1f, 0.5f, new Vector2(-56, -18), new Vector2(-16, 18));
-            var gear = MakeImage(settings.transform, "Icon", Sprite(ARIA + "Textures/Icons/64/Settings.png"), TEXT_DIM);
-            Anchor(gear.rectTransform, 0.5f, 0.5f, 0.5f, 0.5f, new Vector2(-12, -12), new Vector2(12, 12));
+            var settings = MakeAriaButton(bar.transform, "SettingsButton", "", "ButtonBrown");
+            Anchor(((RectTransform)settings.transform), 1f, 0.5f, 1f, 0.5f, new Vector2(-72, -24), new Vector2(-20, 24));
+            var gear = MakeImage(settings.transform, "Icon", Sprite(ARIA + "Textures/Icons/64/Settings.png"), CREAM);
+            Anchor(gear.rectTransform, 0.5f, 0.5f, 0.5f, 0.5f, new Vector2(-14, -14), new Vector2(14, 14));
             gear.raycastTarget = false;
             Wire(settings, actions, "ShowSettings");
         }
 
         static void BuildHero(Transform parent, CrowsMenuActions actions)
         {
-            var hero = MakePanel(parent, "HeroPanel");
-            Anchor(hero.rectTransform, 0.5f, 0.5f, 0.5f, 0.5f, new Vector2(-460, -190), new Vector2(460, 230));
+            // stone-tinted panel with a real gold frame over it — the Aria signature
+            var hero = MakeImage(parent, "HeroPanel", Sprite(ARIA + "Textures/Panels/SimplePanel.png"), TINT_PANEL);
+            Anchor(hero.rectTransform, 0.5f, 0.5f, 0.5f, 0.5f, new Vector2(-470, -180), new Vector2(470, 240));
+            hero.type = Image.Type.Sliced;
 
-            var hint = MakeText(hero.transform, "ArtHint", "[ key art ]", 16, TEXT_DIM, LatoRegular());
-            Anchor(hint.rectTransform, 0.5f, 0.5f, 0.5f, 0.5f, new Vector2(-200, 20), new Vector2(200, 80));
+            var frame = MakeImage(hero.transform, "GoldFrame", Sprite(ARIA + "Textures/Panels/FrameGold.png"), Color.white);
+            Stretch(frame.rectTransform);
+            frame.type = Image.Type.Sliced;
+            frame.raycastTarget = false;
+
+            var hint = MakeText(hero.transform, "ArtHint", "[ key art ]", 18, TEXT_DIM, LatoRegular());
+            Anchor(hint.rectTransform, 0.5f, 0.5f, 0.5f, 0.5f, new Vector2(-200, 30), new Vector2(200, 90));
             hint.alignment = TextAlignmentOptions.Center;
 
-            // Aria's green button keeps its own art — only a slight dim so it sits in the dark scene
-            var play = MakeButton(hero.transform, "PlayButton", "PLAY", 34, new Color(0.9f, 0.9f, 0.9f, 1f), Color.white, Sprite(ARIA + "Textures/Buttons/ButtonGreen.png"));
-            Anchor(((RectTransform)play.transform), 0.5f, 0f, 0.5f, 0f, new Vector2(-140, 26), new Vector2(140, 96));
+            var play = MakeAriaButton(hero.transform, "PlayButton", "PLAY", "ButtonGreen");
+            Anchor(((RectTransform)play.transform), 0.5f, 0f, 0.5f, 0f, new Vector2(-150, 28), new Vector2(150, 104));
             Wire(play, actions, "PlaySolo");
         }
 
@@ -116,41 +128,57 @@ namespace CrowsTCG.EditorTools
             string[] methods = { "ShowCollection", "ShowCollection", "ShowAdventure" };
             for (int i = 0; i < 3; i++)
             {
-                var b = MakeButton(parent, "Nav" + names[i], names[i], 22, INK, TEXT, null);
-                AddStroke(b.image, STROKE);
+                var b = MakeAriaButton(parent, "Nav" + names[i], names[i], "ButtonBrown");
                 var rt = (RectTransform)b.transform;
-                Anchor(rt, 0.5f, 0f, 0.5f, 0f, new Vector2(-465 + i * 320, 20), new Vector2(-175 + i * 320, 70));
+                Anchor(rt, 0.5f, 0f, 0.5f, 0f, new Vector2(-470 + i * 325, 22), new Vector2(-160 + i * 325, 86));
                 Wire(b, actions, methods[i]);
             }
         }
 
         // ================= helpers =================
 
+        /// Aria velvet+gold button at native colors with Hover/Down sprite swaps.
+        static Button MakeAriaButton(Transform parent, string name, string label, string baseName)
+        {
+            var img = MakeImage(parent, name, Sprite(ARIA + "Textures/Buttons/" + baseName + ".png"), Color.white);
+            img.type = Image.Type.Sliced;
+            var btn = img.gameObject.AddComponent<Button>();
+            btn.targetGraphic = img;
+
+            var hover = Sprite(ARIA + "Textures/Buttons/" + baseName + "Hover.png");
+            var down = Sprite(ARIA + "Textures/Buttons/" + baseName + "Down.png");
+            if (hover != null || down != null)
+            {
+                btn.transition = Selectable.Transition.SpriteSwap;
+                var state = btn.spriteState;
+                state.highlightedSprite = hover;
+                state.pressedSprite = down != null ? down : hover;
+                btn.spriteState = state;
+            }
+
+            if (!string.IsNullOrEmpty(label))
+            {
+                var txt = MakeText(img.transform, "Label", label, 26, CREAM, EconomicaBold());
+                Stretch(txt.rectTransform);
+            }
+            return btn;
+        }
+
+        /// Invisible + non-interactive but ACTIVE (Awake/singletons/logic keep running).
+        static void HideKeepAlive(GameObject go)
+        {
+            go.SetActive(true); // undo any earlier SetActive-based hiding
+            var cg = go.GetComponent<CanvasGroup>();
+            if (cg == null) cg = go.AddComponent<CanvasGroup>();
+            cg.alpha = 0f;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
+        }
+
         static void Kill(Transform parent, string name)
         {
-            var t = parent is RectTransform ? parent.Find(name) : parent.Find(name);
-            if (t == null && parent.name == name) t = parent;
             var found = parent.Find(name);
             if (found != null) Object.DestroyImmediate(found.gameObject);
-            else
-            {
-                var direct = GameObject.Find(name);
-                if (direct != null && direct.transform.parent == parent) Object.DestroyImmediate(direct);
-            }
-        }
-
-        static Image MakePanel(Transform parent, string name)
-        {
-            var img = MakeImage(parent, name, null, PANEL);
-            AddStroke(img, STROKE);
-            return img;
-        }
-
-        static void AddStroke(Image img, Color color)
-        {
-            var outline = img.gameObject.AddComponent<Outline>();
-            outline.effectColor = color;
-            outline.effectDistance = new Vector2(2, -2);
         }
 
         static Image MakeImage(Transform parent, string name, Sprite sprite, Color color)
@@ -175,21 +203,6 @@ namespace CrowsTCG.EditorTools
             tmp.alignment = TextAlignmentOptions.Center;
             tmp.raycastTarget = false;
             return tmp;
-        }
-
-        static Button MakeButton(Transform parent, string name, string label, float size, Color bg, Color fg, Sprite sprite)
-        {
-            var img = MakeImage(parent, name, sprite, bg);
-            img.type = Image.Type.Sliced;
-            var btn = img.gameObject.AddComponent<Button>();
-            btn.targetGraphic = img;
-            var colors = btn.colors;
-            colors.highlightedColor = new Color(1.15f, 1.15f, 1.15f, 1f);
-            colors.pressedColor = new Color(0.85f, 0.85f, 0.85f, 1f);
-            btn.colors = colors;
-            var txt = MakeText(img.transform, "Label", label, size, fg, EconomicaBold());
-            Stretch(txt.rectTransform);
-            return btn;
         }
 
         static void Wire(Button b, CrowsMenuActions target, string method)
