@@ -4,23 +4,19 @@ using TcgEngine.UI;
 namespace TcgEngine.Client
 {
     /// <summary>
-    /// Zero-arg wiring targets for the CROWS home hub buttons
-    /// (persistent UnityEvents can't bind methods with optional params).
-    /// Also hides the hub while any kit overlay panel is open.
+    /// Wiring targets for the CROWS home hub (Aria MainMenuItem tabs + buttons).
+    /// Toggle tabs call the TabX(bool) methods; buttons call the zero-arg ones.
+    /// Also hides the hub's center content while a kit overlay panel is open.
     /// </summary>
     public class CrowsMenuActions : MonoBehaviour
     {
-        private CanvasGroup canvas_group;
-
-        void Awake()
-        {
-            canvas_group = GetComponent<CanvasGroup>();
-            if (canvas_group == null)
-                canvas_group = gameObject.AddComponent<CanvasGroup>();
-        }
+        public CanvasGroup center_group; // assigned by the skin bootstrap (center content only — tabs stay)
 
         void Update()
         {
+            if (center_group == null)
+                return;
+
             bool overlay = IsVisible(CollectionPanel.Get())
                 || IsVisible(SettingsPanel.Get())
                 || IsVisible(AdventurePanel.Get())
@@ -28,11 +24,11 @@ namespace TcgEngine.Client
                 || IsVisible(StarterDeckPanel.Get());
 
             float alpha = overlay ? 0f : 1f;
-            if (!Mathf.Approximately(canvas_group.alpha, alpha))
+            if (!Mathf.Approximately(center_group.alpha, alpha))
             {
-                canvas_group.alpha = alpha;
-                canvas_group.interactable = !overlay;
-                canvas_group.blocksRaycasts = !overlay;
+                center_group.alpha = alpha;
+                center_group.interactable = !overlay;
+                center_group.blocksRaycasts = !overlay;
             }
         }
 
@@ -41,19 +37,41 @@ namespace TcgEngine.Client
             return panel != null && panel.IsVisible();
         }
 
+        private void HideOverlays()
+        {
+            if (CollectionPanel.Get() != null && CollectionPanel.Get().IsVisible()) CollectionPanel.Get().Hide(false);
+            if (SettingsPanel.Get() != null && SettingsPanel.Get().IsVisible()) SettingsPanel.Get().Hide(false);
+            if (AdventurePanel.Get() != null && AdventurePanel.Get().IsVisible()) AdventurePanel.Get().Hide(false);
+            if (PackPanel.Get() != null && PackPanel.Get().IsVisible()) PackPanel.Get().Hide(false);
+        }
+
+        // ---- tab targets (Aria MainMenuItem = Toggle) ----
+
+        public void TabHome(bool on)
+        {
+            if (on) HideOverlays();
+        }
+
+        public void TabDecks(bool on)
+        {
+            if (on) { HideOverlays(); CollectionPanel.Get().Show(false); }
+        }
+
+        public void TabCollection(bool on)
+        {
+            if (on) { HideOverlays(); CollectionPanel.Get().Show(false); }
+        }
+
+        public void TabTrials(bool on)
+        {
+            if (on) { HideOverlays(); MainMenu.Get().OnClickAdventure(); }
+        }
+
+        // ---- button targets ----
+
         public void PlaySolo()
         {
             MainMenu.Get().OnClickSolo();
-        }
-
-        public void ShowCollection()
-        {
-            CollectionPanel.Get().Show(false);
-        }
-
-        public void ShowAdventure()
-        {
-            MainMenu.Get().OnClickAdventure();
         }
 
         public void ShowSettings()
