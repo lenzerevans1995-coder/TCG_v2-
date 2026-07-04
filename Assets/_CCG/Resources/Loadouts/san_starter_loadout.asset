@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6865ff4851639324192f76d0f90b9cb1, type: 3}
+  m_Name: san_starter_loadout
+  m_EditorClassIdentifier: Assembly-CSharp::CCG.CCGLoadoutData
+  deck_id: san_starter
+  weapon: {fileID: 11400000, guid: c1b2c3d4e5f6071829304a5b6c7d0003, type: 2}
+  head: {fileID: 11400000, guid: c1b2c3d4e5f6071829304a5b6c7d0012, type: 2}
+  chest: {fileID: 11400000, guid: c1b2c3d4e5f6071829304a5b6c7d0009, type: 2}
+  arms: {fileID: 11400000, guid: c1b2c3d4e5f6071829304a5b6c7d0008, type: 2}
+  legs: {fileID: 0}

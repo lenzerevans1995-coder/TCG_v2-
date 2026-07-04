@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 43728f481edb63a4ba052f1d14017656
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 312760
+  packageName: Megapack - Magic Cards
+  packageVersion: 1.0.0
+  assetPath: Assets/BulletGames/Megapack - Magic Cards/Scripts/CardScriptable.cs
+  uploadId: 737422

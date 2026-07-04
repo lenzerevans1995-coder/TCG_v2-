@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43728f481edb63a4ba052f1d14017656, type: 3}
+  m_Name: Style4
+  m_EditorClassIdentifier: Assembly-CSharp::ScriptableData
+  label: 4
+  UIElementsImage:
+  - label: 0
+    sprite: {fileID: 21300000, guid: 977bdd7436e8e554c9ef2c065e0d3270, type: 3}
+    color: {r: 0.7866317, g: 0.25, b: 1, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 618, y: 922}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 1
+    sprite: {fileID: 21300000, guid: 59f110e3aeb24cb4cb2535911f202bb1, type: 3}
+    color: {r: 0.49935904, g: 0, b: 0.8867924, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 512, y: 816}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 2
+    sprite: {fileID: 21300000, guid: 2c4e7c4b878a3a140b5c07eeb724d0e6, type: 3}
+    color: {r: 0.8980392, g: 0.8392157, b: 0.9882353, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 369.64, y: 369.64}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 3
+    sprite: {fileID: 21300000, guid: 2dc70b9af90aa084098a6299131ab328, type: 3}
+    color: {r: 0.8039216, g: 0.58431375, b: 0.972549, a: 1}
+    position: {x: 0, y: 8}
+    size: {x: 369.64, y: 369.64}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 4
+    sprite: {fileID: 21300000, guid: 2dbe7fc914cffef43a83ec0805b0ca1e, type: 3}
+    color: {r: 0.5652789, g: 0.0047169924, b: 1, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 618, y: 922}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 5
+    sprite: {fileID: 21300000, guid: 81cd27d0b7f509f40b42ccfccbd6cd08, type: 3}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 512, y: 816}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 7
+    sprite: {fileID: 21300000, guid: d0b4dd1fbda1898409e312472961a271, type: 3}
+    color: {r: 0.98599046, g: 0.5330188, b: 1, a: 1}
+    position: {x: -1.7, y: 380.6}
+    size: {x: 170, y: 170}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 8
+    sprite: {fileID: 21300000, guid: 142374a7611d8db4abb509dda1bf56bf, type: 3}
+    color: {r: 0.9803922, g: 0.54901963, b: 0.9960785, a: 1}
+    position: {x: 15, y: -137.6}
+    size: {x: 65, y: 65}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 9
+    sprite: {fileID: 21300000, guid: d20fb507a9c60a94bb8665fddcb69f16, type: 3}
+    color: {r: 0.98039216, g: 0.54901963, b: 0.99607843, a: 1}
+    position: {x: 159.3, y: -139.1}
+    size: {x: 70, y: 70}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 10
+    sprite: {fileID: 21300000, guid: 17d439bb47f56b944b78c3d4a65ee350, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: 0, y: 152.55}
+    size: {x: 512, y: 510.9}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 11
+    sprite: {fileID: 21300000, guid: daecec1a3f7f3664680b725fdef3f688, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 0.003921569}
+    position: {x: 0, y: 0}
+    size: {x: 512, y: 816}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 12
+    sprite: {fileID: 21300000, guid: 3a64c5bb3c445934cb61567db3e8e0dc, type: 3}
+    color: {r: 0.9647059, g: 0, b: 1, a: 1}
+    position: {x: -178.58, y: -114.4}
+    size: {x: 148.31, y: 159.06}
+    rotation: {x: 0, y: 0, z: 0}
+  UIElementsText:
+  - label: 0
+    text: CARD NAME
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: -86.5, y: -222.2}
+    size: 46
+  - label: 1
+    text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed tellus
+      vel ex cursus ornare. Pellentesque nec vestibulum diam. Vestibulum risus mi.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: -27.2, y: -320.6}
+    size: 25
+  - label: 2
+    text: 10
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: -1.2, y: 393.6}
+    size: 60
+  - label: 3
+    text: 4
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: 63.9, y: -142.5}
+    size: 60
+  - label: 4
+    text: 5
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: 206.2, y: -142.5}
+    size: 60

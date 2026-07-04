@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 88f58810a268b7e4ab68dcf1212e8216
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Bona Nova
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 14249fde817b62343b069fdb00873d3e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 312760
+  packageName: Megapack - Magic Cards
+  packageVersion: 1.0.0
+  assetPath: Assets/BulletGames/Megapack - Magic Cards/Fonts/Bona_Nova/BonaNova-Bold.ttf
+  uploadId: 737422

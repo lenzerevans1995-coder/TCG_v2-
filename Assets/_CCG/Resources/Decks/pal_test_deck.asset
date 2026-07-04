@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ecef176d27eb040a9770e0eefea2ec, type: 3}
+  m_Name: pal_test_deck
+  m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.DeckData
+  id: pal_test_deck
+  title: Palatine Trial Deck
+  hero: {fileID: 11400000, guid: 330c4cbab052f4e45b982eafd049d197, type: 2}
+  cards:
+  - {fileID: 11400000, guid: 3215c8c14521b344684da08c9f4c016e, type: 2}
+  - {fileID: 11400000, guid: db5737e5325c7da4890abb816450c542, type: 2}
+  - {fileID: 11400000, guid: 23dafa69b0539c74094db9371c891015, type: 2}
+  - {fileID: 11400000, guid: 6631c508f69337e4ab6f5306a1545333, type: 2}
+  - {fileID: 11400000, guid: 9c1ec792c196ffd46916197747011da0, type: 2}
+  - {fileID: 11400000, guid: 67f7cbd1d7fb8cf42a46dbeea1b40c1e, type: 2}
+  - {fileID: 11400000, guid: af2392149b5ced14e9f356c3e43283c6, type: 2}
+  - {fileID: 11400000, guid: a6a468b5dbab12d45ad44c592b802759, type: 2}
+  - {fileID: 11400000, guid: 9b568892c31d9f64a9f7e7f49d584c8e, type: 2}
+  - {fileID: 11400000, guid: 8907c5ad08d3b9e41ac337b30c8245bd, type: 2}
+  - {fileID: 11400000, guid: 90114aa2c3dd29f46820b95467b2bbd3, type: 2}
+  - {fileID: 11400000, guid: 90114aa2c3dd29f46820b95467b2bbd3, type: 2}
+  - {fileID: 11400000, guid: 328b92f1e2024ad41bd03db933a33847, type: 2}
+  - {fileID: 11400000, guid: 328b92f1e2024ad41bd03db933a33847, type: 2}
+  - {fileID: 11400000, guid: d3e866161f45f03498b4098dbd8d968d, type: 2}
+  - {fileID: 11400000, guid: d3e866161f45f03498b4098dbd8d968d, type: 2}
+  - {fileID: 11400000, guid: 90322744d448d6a46b8c2361a222d9a6, type: 2}
+  - {fileID: 11400000, guid: 90322744d448d6a46b8c2361a222d9a6, type: 2}
+  - {fileID: 11400000, guid: 83692bb780503404b92feed04c7d222b, type: 2}
+  - {fileID: 11400000, guid: 83692bb780503404b92feed04c7d222b, type: 2}

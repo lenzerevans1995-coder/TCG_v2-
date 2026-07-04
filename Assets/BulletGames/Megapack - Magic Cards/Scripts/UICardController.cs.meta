@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b34dd09f327f8b746bafd4a6327483cb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 312760
+  packageName: Megapack - Magic Cards
+  packageVersion: 1.0.0
+  assetPath: Assets/BulletGames/Megapack - Magic Cards/Scripts/UICardController.cs
+  uploadId: 737422

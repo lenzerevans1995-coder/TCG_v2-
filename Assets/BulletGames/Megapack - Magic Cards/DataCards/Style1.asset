@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43728f481edb63a4ba052f1d14017656, type: 3}
+  m_Name: Style1
+  m_EditorClassIdentifier: Assembly-CSharp::ScriptableData
+  label: 1
+  UIElementsImage:
+  - label: 0
+    sprite: {fileID: 21300000, guid: 977bdd7436e8e554c9ef2c065e0d3270, type: 3}
+    color: {r: 1, g: 0.25943398, b: 0.31676808, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 618, y: 922}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 1
+    sprite: {fileID: 21300000, guid: 2c79103ff250e5043b899d7c993b9939, type: 3}
+    color: {r: 1, g: 0, b: 0, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 512, y: 816}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 2
+    sprite: {fileID: 21300000, guid: db168902503e9c041a3aa241ba9c9b79, type: 3}
+    color: {r: 1, g: 0.827451, b: 0.78039217, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 369.64, y: 369.64}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 3
+    sprite: {fileID: 21300000, guid: 0d537fd89968c1944bdd84c6aebc1b42, type: 3}
+    color: {r: 1, g: 0.70980394, b: 0.6313726, a: 1}
+    position: {x: 0, y: 27}
+    size: {x: 369.64, y: 369.64}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 4
+    sprite: {fileID: 21300000, guid: 2dbe7fc914cffef43a83ec0805b0ca1e, type: 3}
+    color: {r: 1, g: 0, b: 0, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 618, y: 922}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 5
+    sprite: {fileID: 21300000, guid: 5e63d8966fbfa15469a9d392dff9af7b, type: 3}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 512, y: 816}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 6
+    sprite: {fileID: 21300000, guid: 103c4dbf1aaafe746ae7052033118472, type: 3}
+    color: {r: 1, g: 0.16320226, b: 0, a: 1}
+    position: {x: 0, y: 0}
+    size: {x: 512, y: 816}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 7
+    sprite: {fileID: 21300000, guid: dc6e102cb5a83f8419d9c4bd26fafb79, type: 3}
+    color: {r: 1, g: 0.2242595, b: 0.2028302, a: 1}
+    position: {x: 208.94, y: 362}
+    size: {x: 170, y: 170}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 8
+    sprite: {fileID: 21300000, guid: 142374a7611d8db4abb509dda1bf56bf, type: 3}
+    color: {r: 0.16862746, g: 0.9960785, b: 0.77647066, a: 1}
+    position: {x: -208.49, y: -107.8}
+    size: {x: 65, y: 65}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 9
+    sprite: {fileID: 21300000, guid: 5d37f8b17e78d7d4496ebc6505e15bd1, type: 3}
+    color: {r: 0.9960785, g: 0.19215688, b: 0.19215688, a: 1}
+    position: {x: 205.58, y: -106.1}
+    size: {x: 85, y: 85}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 10
+    sprite: {fileID: 21300000, guid: 0727cbfbebdfece4a97ed5b5a5790e1a, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: 0, y: 153}
+    size: {x: 550, y: 550}
+    rotation: {x: 0, y: 0, z: 0}
+  - label: 11
+    sprite: {fileID: 21300000, guid: 13a1f4ae1f1ff924bbe8330f96bf7815, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 0.003921569}
+    position: {x: 0, y: 0}
+    size: {x: 512, y: 816}
+    rotation: {x: 0, y: 0, z: 0}
+  UIElementsText:
+  - label: 0
+    text: CARD NAME
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: -1.82, y: -159.8}
+    size: 46
+  - label: 1
+    text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed tellus
+      vel ex cursus ornare. Pellentesque nec vestibulum diam. Vestibulum risus mi.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: -13.9, y: -274.8}
+    size: 25
+  - label: 2
+    text: 9
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: 208.94, y: 365.4}
+    size: 90
+  - label: 3
+    text: 4
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: -208.49, y: -49.4}
+    size: 60
+  - label: 4
+    text: 5
+    color: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: 205.53, y: -49.4}
+    size: 60

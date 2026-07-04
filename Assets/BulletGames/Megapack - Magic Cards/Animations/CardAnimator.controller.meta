@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6ce58f40ef1cf524dae631d197bd0343
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 312760
+  packageName: Megapack - Magic Cards
+  packageVersion: 1.0.0
+  assetPath: Assets/BulletGames/Megapack - Magic Cards/Animations/CardAnimator.controller
+  uploadId: 737422
