@@ -61,7 +61,7 @@ namespace TcgEngine.AI
             job.ai_level = level;
 
             job.heuristic = new AIHeuristic(player_id, level);
-            job.game_logic = new GameLogic(true); // CROWS: rules layer re-pointed when CrowsGameLogic lands //Skip all delays for the AI calculations
+            job.game_logic = new CrowsGameLogic(true); // CROWS rules layer //Skip all delays for the AI calculations
 
             return job;
         }

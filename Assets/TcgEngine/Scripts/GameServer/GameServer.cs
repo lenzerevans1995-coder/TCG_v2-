@@ -50,7 +50,7 @@ namespace TcgEngine.Server
             nb_players = Mathf.Max(players, 2);
             is_dedicated_server = online;
             game_data = new Game(uid, nb_players);
-            gameplay = new GameLogic(game_data); // CROWS: rules layer re-pointed when CrowsGameLogic lands
+            gameplay = new CrowsGameLogic(game_data); // CROWS rules layer
 
             //Commands
             RegisterAction(GameAction.PlayerSettings, ReceivePlayerSettings);
