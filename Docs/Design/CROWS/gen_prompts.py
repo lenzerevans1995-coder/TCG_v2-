@@ -5,11 +5,12 @@ import csv
 # linework, heavy dry-brush ink, jagged edges, sponge-stippled background gradient,
 # desaturated greys/blacks + one vibrant neon glow accent. Backgrounds NOT empty.
 
-STYLE = ("dark fantasy illustration, gritty graphic novel style, raw coarse gestural linework, "
+STYLE = ("cartoon graphic novel style, raw coarse gestural linework, "
          "heavy dry-brush ink strokes, jagged edges, deep analog texture, sponge-stippled "
-         "background gradient, extremely limited desaturated color palette of dark greys and "
-         "deep blacks")
-END = "high contrast, visceral and ominous aesthetic, square composition, no text"
+         "background gradient, limited desaturated color palette of muted natural tones")
+END = ("high contrast, square composition, no text, "
+       "no border, no frame, full-bleed edge-to-edge artwork, "
+       "make sure it is a hand drawn stylized cartoon")
 
 # per-aspect neon glow accent (derived from frame palette, pushed to neon)
 ACCENT = {
