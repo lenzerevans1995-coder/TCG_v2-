@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: item_prospect_crossbow
   title: Prospect Crossbow
-  art_full: {fileID: 21300000, guid: ab1843e2c5dcbc843b41aaa2506c9504, type: 3}
-  art_board: {fileID: 21300000, guid: ab1843e2c5dcbc843b41aaa2506c9504, type: 3}
+  art_full: {fileID: 21300000, guid: 8800ee40356cdac4bad0460fa510636d, type: 3}
+  art_board: {fileID: 21300000, guid: 8800ee40356cdac4bad0460fa510636d, type: 3}
   type: 50
   team: {fileID: 11400000, guid: 6210edf1502b28c4e844511d7702a2a6, type: 2}
   rarity: {fileID: 11400000, guid: fab1a52f5a36cc942985dea95be18ac9, type: 2}

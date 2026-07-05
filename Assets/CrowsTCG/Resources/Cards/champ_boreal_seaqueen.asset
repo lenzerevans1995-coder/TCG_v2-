@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: champ_boreal_seaqueen
   title: Boreal Seaqueen
-  art_full: {fileID: 21300000, guid: 4fe3fe6629492a94bb77cb33428e08bc, type: 3}
-  art_board: {fileID: 21300000, guid: 4fe3fe6629492a94bb77cb33428e08bc, type: 3}
+  art_full: {fileID: 21300000, guid: 8d9e3c258c27eeb4aad31aa04d92da80, type: 3}
+  art_board: {fileID: 21300000, guid: 8d9e3c258c27eeb4aad31aa04d92da80, type: 3}
   type: 10
   team: {fileID: 11400000, guid: 23cba96a023ef63448c10b7fa56a8243, type: 2}
   rarity: {fileID: 11400000, guid: 13b592f40b7cd424c966f5d7eef425aa, type: 2}

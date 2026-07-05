@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: minion_arcana_owl
   title: Arcana Owl
-  art_full: {fileID: 21300000, guid: 3fd540a7745029b45a8edd7fa53d9312, type: 3}
-  art_board: {fileID: 21300000, guid: 3fd540a7745029b45a8edd7fa53d9312, type: 3}
+  art_full: {fileID: 21300000, guid: 90380f1bcb9a58648970aca24564f062, type: 3}
+  art_board: {fileID: 21300000, guid: 90380f1bcb9a58648970aca24564f062, type: 3}
   type: 10
   team: {fileID: 11400000, guid: f7c1a70d2b134144a9a2004af10d7846, type: 2}
   rarity: {fileID: 11400000, guid: fab1a52f5a36cc942985dea95be18ac9, type: 2}

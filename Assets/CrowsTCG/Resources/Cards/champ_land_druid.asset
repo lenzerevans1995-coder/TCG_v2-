@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: champ_land_druid
   title: Land Druid
-  art_full: {fileID: 21300000, guid: 28094385dbe0c6449b322b15c9b15f25, type: 3}
-  art_board: {fileID: 21300000, guid: 28094385dbe0c6449b322b15c9b15f25, type: 3}
+  art_full: {fileID: 21300000, guid: 43f694456eb6e7740bc92e5b251d094f, type: 3}
+  art_board: {fileID: 21300000, guid: 43f694456eb6e7740bc92e5b251d094f, type: 3}
   type: 10
   team: {fileID: 11400000, guid: d5f357ec21b784c41b631c236c7e5296, type: 2}
   rarity: {fileID: 11400000, guid: 13b592f40b7cd424c966f5d7eef425aa, type: 2}

@@ -51,53 +51,45 @@ namespace CCG
         private static Sprite rarity_fill;
         private static Sprite rarity_slot;
 
-        /// <summary>FULL card composite under parent at the given scale (1 = 618x922 units).</summary>
+        /// <summary>FULL card: CROWS pack frame (1800x2520 px scaled to 618x865 units),
+        /// geometry from the approved composite spec (compose_card_preview.py).</summary>
         public static CCGCardFace Create(Transform parent, float scale, bool show_cost = true)
         {
+            const float K = 618f / 1800f; //frame px -> ui units
+            const float TOP = 865f * 0.5f;
             CCGCardFace f = new CCGCardFace();
-            f.root = MakeRoot(parent, scale, new Vector2(618, 922));
+            f.root = MakeRoot(parent, scale, new Vector2(618, 865));
+            f.art_win_w = (1668 - 130) * K;
+            f.art_win_h = (1417 - 133) * K;
 
-            f.frame_bg = Img("FrameBG", f.root, new Vector2(618, 922), Vector2.zero);
-            f.art_mask = Img("ArtMask", f.root, new Vector2(512, 816), Vector2.zero);
+            f.art_mask = Img("ArtMask", f.root, new Vector2(f.art_win_w, f.art_win_h), new Vector2(899 * K - 309f, TOP - 775 * K));
             f.art_mask.gameObject.AddComponent<Mask>().showMaskGraphic = false;
-            f.art = Img("Art", f.art_mask.rectTransform, new Vector2(512, 816), Vector2.zero);
-            f.bg_text = Img("BGText", f.root, new Vector2(512, 816), Vector2.zero);
-            f.frame_border = Img("FrontFrame", f.root, new Vector2(512, 816), Vector2.zero);
-            f.cost_icon = Img("CostIcon", f.root, new Vector2(170, 170), new Vector2(208.94f, 362f));
-            f.pitch_icon = Img("PitchIcon", f.root, new Vector2(120, 120), new Vector2(-208.94f, 362f));
-            f.atk_icon = Img("AtkIcon", f.root, new Vector2(96, 96), new Vector2(-208.49f, -107.8f));
-            f.hp_icon = Img("HpIcon", f.root, new Vector2(104, 104), new Vector2(205.58f, -106.1f));
+            f.art = Img("Art", f.art_mask.rectTransform, new Vector2(f.art_win_w, f.art_win_h), Vector2.zero);
+            f.frame_border = Img("FrontFrame", f.root, new Vector2(618, 865), Vector2.zero);
 
+            //the frame's own black circles carry cost (top) + aspect gem (below)
+            f.cost_txt = Txt("Cost", f.root, new Vector2(120, 100), new Vector2(267 * K - 309f, TOP - 266 * K), 64);
             for (int i = 0; i < 3; i++)
-                f.class_icon_layers[i] = Img("ClassIcon" + i, f.root, new Vector2(110, 110), new Vector2(190f, -345f));
+                f.class_icon_layers[i] = Img("ClassIcon" + i, f.root, new Vector2(62, 62), new Vector2(232 * K - 309f, TOP - 522 * K));
             f.class_icon = f.class_icon_layers[0];
 
-            for (int i = 0; i < 5; i++)
-                f.rarity_icons[i] = Img("Rarity" + (i + 1), f.root, new Vector2(80, 80), new Vector2(-82.7f + i * 40.5f, 384.4f));
+            f.title_txt = Tmp("Title", f.root, new Vector2(500, 52), new Vector2(0f, TOP - 1520 * K), 34, FontStyles.Bold);
+            f.desc_txt = Tmp("Desc", f.root, new Vector2(470, 170), new Vector2(0f, TOP - 1880 * K), 22, FontStyles.Normal);
+            f.type_txt = Txt("TypeLine", f.root, new Vector2(300, 34), new Vector2(0f, TOP - 2380 * K), 19);
 
-            //BLOCK chip (FaB defense window): steel plate on the left edge
-            f.block_icon = Img("BlockIcon", f.root, new Vector2(84, 74), new Vector2(-247f, 150f));
-            f.block_icon.color = new Color(0.5f, 0.66f, 0.79f, 1f);
-            SetRounded(f.block_icon, GetRoundShape(), 2.2f);
-            f.block_txt = Txt("Block", f.root, new Vector2(90, 76), new Vector2(-247f, 150f), 48);
-            f.block_txt.color = new Color(0.05f, 0.08f, 0.12f);
-
-            f.title_txt = Tmp("Title", f.root, new Vector2(430, 64), new Vector2(-1.8f, -159.8f), 42, FontStyles.Bold);
-            f.desc_txt = Tmp("Desc", f.root, new Vector2(420, 160), new Vector2(-13.9f, -274.8f), 25, FontStyles.Normal);
-            f.cost_txt = Txt("Cost", f.root, new Vector2(170, 120), new Vector2(208.94f, 365.4f), 90);
-            f.attack_txt = Txt("Atk", f.root, new Vector2(160, 110), new Vector2(-208.49f, -44f), 84);
-            f.hp_txt = Txt("HP", f.root, new Vector2(160, 110), new Vector2(205.53f, -44f), 84);
-            f.attack_txt.gameObject.AddComponent<Outline>().effectDistance = new Vector2(4, -4);
-            f.hp_txt.gameObject.AddComponent<Outline>().effectDistance = new Vector2(4, -4);
-            f.pitch_txt = Txt("PitchVal", f.root, new Vector2(120, 90), new Vector2(-208.94f, 364f), 64);
-            f.type_txt = Txt("TypeLine", f.root, new Vector2(380, 44), new Vector2(-60f, -394f), 24);
+            //bottom badges: AC shield BL, attack dagger next to it, life heart BR
+            f.block_icon = Img("ArmorIcon", f.root, new Vector2(113, 113), new Vector2(220 * K - 309f, TOP - 2325 * K));
+            f.block_txt = Txt("Armor", f.root, new Vector2(110, 90), new Vector2(220 * K - 309f, TOP - 2350 * K), 46);
+            f.atk_icon = Img("AtkIcon", f.root, new Vector2(103, 103), new Vector2(535 * K - 309f, TOP - 2330 * K));
+            f.attack_txt = Txt("Atk", f.root, new Vector2(110, 90), new Vector2(545 * K - 309f, TOP - 2355 * K), 46);
+            f.hp_icon = Img("HpIcon", f.root, new Vector2(113, 113), new Vector2(1580 * K - 309f, TOP - 2325 * K));
+            f.hp_txt = Txt("HP", f.root, new Vector2(110, 90), new Vector2(1580 * K - 309f, TOP - 2350 * K), 46);
+            foreach (Text t in new Text[] { f.attack_txt, f.hp_txt, f.block_txt })
+                t.gameObject.AddComponent<Outline>().effectDistance = new Vector2(3, -3);
 
             f.show_cost = show_cost;
             if (!show_cost)
-            {
-                f.cost_icon.gameObject.SetActive(false);
                 f.cost_txt.gameObject.SetActive(false);
-            }
             return f;
         }
 
@@ -165,9 +157,48 @@ namespace CCG
 
         /// <summary>Apply a card's data to whichever layout was built. Null-safe:
         /// token mode only builds a subset of the elements.</summary>
+        private static Sprite crows_dagger, crows_heart, crows_shield;
+
+        /// <summary>CROWS pack-frame skin: frame by aspect (champion trait wins),
+        /// dagger/heart/shield badges, aspect gem in the frame circle.</summary>
+        private void ApplyCrows(TcgEngine.CardData data)
+        {
+            if (crows_dagger == null)
+            {
+                crows_dagger = Resources.Load<Sprite>("Icons/24");
+                crows_heart = Resources.Load<Sprite>("Icons/52");
+                crows_shield = Resources.Load<Sprite>("Icons/57");
+            }
+            string frame_name = data.HasTrait("champion") ? "CHAMPION" : (data.team != null ? data.team.id.ToUpper() : "UNIVERSAL");
+            Sprite fr = Resources.Load<Sprite>("Frames/" + frame_name);
+            if (fr == null) fr = Resources.Load<Sprite>("Frames/UNIVERSAL");
+            if (fr != null)
+            {
+                frame_border.sprite = fr;
+                frame_border.color = Color.white;
+            }
+            if (atk_icon != null) atk_icon.sprite = crows_dagger;
+            if (hp_icon != null) hp_icon.sprite = crows_heart;
+            if (block_icon != null)
+            {
+                block_icon.sprite = crows_shield;
+                block_icon.color = Color.white;
+                bool show = data.IsCharacter();
+                block_icon.gameObject.SetActive(show);
+                block_txt.gameObject.SetActive(show);
+                block_txt.text = data.GetStat("armor").ToString();
+                block_txt.color = Color.white;
+            }
+            if (data.team != null && data.team.icon != null)
+                foreach (Image layer in class_icon_layers)
+                    if (layer != null) layer.sprite = data.team.icon;
+        }
+
         public void Apply(TcgEngine.CardData data)
         {
-            CardScriptable style = GetStyle(data);
+            if (!token_mode)
+                ApplyCrows(data);
+            CardScriptable style = token_mode ? GetStyle(data) : null;
             if (style != null)
             {
                 foreach (UICardImage el in style.UIElementsImage)
@@ -281,8 +312,8 @@ namespace CCG
             {
                 if (layer == null) continue;
                 layer.gameObject.SetActive(has_class);
-                if (has_class)
-                    layer.color = Color.Lerp(data.team.color, Color.white, token_mode ? 0.85f : 0.55f);
+                if (has_class) //full cards: pack gem icons are already colored — keep them white
+                    layer.color = token_mode ? Color.Lerp(data.team.color, Color.white, 0.85f) : Color.white;
             }
 
             //Rarity strip (full cards only)

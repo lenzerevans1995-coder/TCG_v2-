@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: minion_boreal_crab
   title: Boreal Crab
-  art_full: {fileID: 21300000, guid: f80a511e664e71d439b805d60c722a09, type: 3}
-  art_board: {fileID: 21300000, guid: f80a511e664e71d439b805d60c722a09, type: 3}
+  art_full: {fileID: 21300000, guid: 8ec005336b28f874988a0c68e4997071, type: 3}
+  art_board: {fileID: 21300000, guid: 8ec005336b28f874988a0c68e4997071, type: 3}
   type: 10
   team: {fileID: 11400000, guid: 23cba96a023ef63448c10b7fa56a8243, type: 2}
   rarity: {fileID: 11400000, guid: fab1a52f5a36cc942985dea95be18ac9, type: 2}

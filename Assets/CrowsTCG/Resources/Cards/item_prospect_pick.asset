@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: item_prospect_pick
   title: Prospect Pick
-  art_full: {fileID: 21300000, guid: 9e9517fda3fbb6948a1dc932b2d71a65, type: 3}
-  art_board: {fileID: 21300000, guid: 9e9517fda3fbb6948a1dc932b2d71a65, type: 3}
+  art_full: {fileID: 21300000, guid: 1edfabdc8da681e4a9506bbb46277437, type: 3}
+  art_board: {fileID: 21300000, guid: 1edfabdc8da681e4a9506bbb46277437, type: 3}
   type: 50
   team: {fileID: 11400000, guid: 6210edf1502b28c4e844511d7702a2a6, type: 2}
   rarity: {fileID: 11400000, guid: 72248f07232412e4db2f6864dbb4e271, type: 2}

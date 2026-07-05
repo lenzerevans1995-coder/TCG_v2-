@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: champ_occult_necromancer
   title: Occult Necromancer
-  art_full: {fileID: 21300000, guid: c500c386489b0ed49a0f349a868551a5, type: 3}
-  art_board: {fileID: 21300000, guid: c500c386489b0ed49a0f349a868551a5, type: 3}
+  art_full: {fileID: 21300000, guid: b623c1071bf6b3d4c9884a506e2dea2c, type: 3}
+  art_board: {fileID: 21300000, guid: b623c1071bf6b3d4c9884a506e2dea2c, type: 3}
   type: 10
   team: {fileID: 11400000, guid: 04e734394bf019949b75b530d450ff64, type: 2}
   rarity: {fileID: 11400000, guid: 13b592f40b7cd424c966f5d7eef425aa, type: 2}

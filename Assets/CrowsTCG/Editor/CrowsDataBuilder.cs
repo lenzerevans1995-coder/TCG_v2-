@@ -72,6 +72,7 @@ namespace CrowsTCG.EditorTools
         {
             ArchiveV1Data();
             EnsureFolders();
+            EnsureSpriteImports(GEN); // fresh Firefly imports default to non-sprite
 
             var teams = BuildTeams();
             var armor = BuildTrait("armor", "Armor");
@@ -325,6 +326,25 @@ namespace CrowsTCG.EditorTools
                     }
                 }
             }
+        }
+
+        static void EnsureSpriteImports(string folder)
+        {
+            int fixedCount = 0;
+            foreach (var g in AssetDatabase.FindAssets("t:Texture2D", new[] { folder }))
+            {
+                var path = AssetDatabase.GUIDToAssetPath(g);
+                var imp = AssetImporter.GetAtPath(path) as TextureImporter;
+                if (imp == null) continue;
+                if (imp.textureType != TextureImporterType.Sprite || imp.spriteImportMode != SpriteImportMode.Single)
+                {
+                    imp.textureType = TextureImporterType.Sprite;
+                    imp.spriteImportMode = SpriteImportMode.Single;
+                    imp.SaveAndReimport();
+                    fixedCount++;
+                }
+            }
+            if (fixedCount > 0) Debug.Log("CROWS: sprite-fixed " + fixedCount + " textures in " + folder);
         }
 
         static void EnsureFolders()

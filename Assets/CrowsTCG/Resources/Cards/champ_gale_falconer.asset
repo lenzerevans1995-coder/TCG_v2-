@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: champ_gale_falconer
   title: Gale Falconer
-  art_full: {fileID: 21300000, guid: 03d12ba59c35d784e899a02a83fbc128, type: 3}
-  art_board: {fileID: 21300000, guid: 03d12ba59c35d784e899a02a83fbc128, type: 3}
+  art_full: {fileID: 21300000, guid: ba5319cacbc49e0499a043a8ef196640, type: 3}
+  art_board: {fileID: 21300000, guid: ba5319cacbc49e0499a043a8ef196640, type: 3}
   type: 10
   team: {fileID: 11400000, guid: 2e67d682a2fbe6d46b0d4e6ff12c915a, type: 2}
   rarity: {fileID: 11400000, guid: 13b592f40b7cd424c966f5d7eef425aa, type: 2}

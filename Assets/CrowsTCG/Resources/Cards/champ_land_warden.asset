@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: champ_land_warden
   title: Land Warden
-  art_full: {fileID: 21300000, guid: 5cb790600ad61e24ab89000cf3a727d3, type: 3}
-  art_board: {fileID: 21300000, guid: 5cb790600ad61e24ab89000cf3a727d3, type: 3}
+  art_full: {fileID: 21300000, guid: 3ca5c2564bdd5ad4c927c5ac74062900, type: 3}
+  art_board: {fileID: 21300000, guid: 3ca5c2564bdd5ad4c927c5ac74062900, type: 3}
   type: 10
   team: {fileID: 11400000, guid: d5f357ec21b784c41b631c236c7e5296, type: 2}
   rarity: {fileID: 11400000, guid: 13b592f40b7cd424c966f5d7eef425aa, type: 2}

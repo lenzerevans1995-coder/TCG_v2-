@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.CardData
   id: item_universal_buckler
   title: Universal Buckler
-  art_full: {fileID: 21300000, guid: d1c3e3d4523995a4faacf9f2bb554325, type: 3}
-  art_board: {fileID: 21300000, guid: d1c3e3d4523995a4faacf9f2bb554325, type: 3}
+  art_full: {fileID: 21300000, guid: 9fd29784b5f93ca448ad4d578447545d, type: 3}
+  art_board: {fileID: 21300000, guid: 9fd29784b5f93ca448ad4d578447545d, type: 3}
   type: 50
   team: {fileID: 11400000, guid: 5d10b8a9f08c66a459f2670e5006e69b, type: 2}
   rarity: {fileID: 11400000, guid: 72248f07232412e4db2f6864dbb4e271, type: 2}
