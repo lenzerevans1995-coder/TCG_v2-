@@ -97,64 +97,46 @@ namespace CCG
             return f;
         }
 
-        /// <summary>TOKEN composite (phase-style landscape tile, 618x340 units).</summary>
+        /// <summary>CROWS BOARD TOKEN: pack square token frame (TOKEN_FRAME 1577x1563),
+        /// art window + one icon per corner (user spec): TL attack dagger, TR aspect
+        /// gem, BL AC shield, BR life heart. Numbers white with black outline.</summary>
         public static CCGCardFace CreateToken(Transform parent, float scale)
         {
+            const float K = 520f / 1577f; //token frame px -> ui units
+            const float FH = 1563f * K;   //≈515
+            float TOPY = FH * 0.5f;
             CCGCardFace f = new CCGCardFace();
             f.token_mode = true;
             f.show_cost = false;
-            f.root = MakeRoot(parent, scale, new Vector2(TOKEN_W, TOKEN_H));
-            f.art_win_w = 496f;
-            f.art_win_h = 384f;
+            f.root = MakeRoot(parent, scale, new Vector2(520f, FH));
+            f.art_win_w = (1460 - 117) * K;
+            f.art_win_h = (1416 - 82) * K;
 
-            //ROUNDED frame (user rule: tokens have round, not hard, edges):
-            //9-sliced rounded-rect shapes, faction-colored border + dark fill
-            Sprite round_shape = GetRoundShape();
-            f.frame_bg = Img("Border", f.root, new Vector2(TOKEN_W, TOKEN_H), Vector2.zero); //color = faction (Apply)
-            SetRounded(f.frame_bg, round_shape, 0.55f);
-            Image fill = Img("Fill", f.root, new Vector2(TOKEN_W - 12f, TOKEN_H - 12f), Vector2.zero);
-            fill.color = new Color(0.06f, 0.08f, 0.12f, 1f);
-            SetRounded(fill, round_shape, 0.57f);
-
-            //Rounded art window: art COVER-fits, clipped to the rounded shape
+            //art window behind the frame (window center px 788,749)
             GameObject win = new GameObject("ArtWindow", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Mask));
             RectTransform win_rt = win.GetComponent<RectTransform>();
             win_rt.SetParent(f.root, false);
             win_rt.sizeDelta = new Vector2(f.art_win_w, f.art_win_h);
-            win_rt.anchoredPosition = new Vector2(0f, -18f);
-            Image win_img = win.GetComponent<Image>();
-            SetRounded(win_img, round_shape, 0.7f);
+            win_rt.anchoredPosition = new Vector2(788f * K - 260f, TOPY - 749f * K);
             win.GetComponent<Mask>().showMaskGraphic = false;
+            f.frame_bg = win.GetComponent<Image>(); //backdrop tint target (transparent figure art)
+            f.frame_bg.color = new Color(0.09f, 0.10f, 0.11f, 1f);
             f.art = Img("Art", win_rt, new Vector2(f.art_win_w, f.art_win_h), Vector2.zero);
 
-            //Name bar (rounded, nested inside the frame radius)
-            Image bar = Img("NameBar", f.root, new Vector2(488, 58), new Vector2(0f, 203f));
-            bar.color = new Color(0.03f, 0.05f, 0.09f, 0.94f);
-            SetRounded(bar, round_shape, 0.9f);
-            f.title_txt = Tmp("Title", f.root, new Vector2(410, 56), new Vector2(-28f, 203f), 33, FontStyles.Bold);
-            f.title_txt.alignment = TextAlignmentOptions.Left;
-            //Single line, long names end with "..." like other card games
-            f.title_txt.textWrappingMode = TextWrappingModes.NoWrap;
-            f.title_txt.overflowMode = TextOverflowModes.Ellipsis;
+            f.frame_border = Img("TokenFrame", f.root, new Vector2(520f, FH), Vector2.zero);
 
-            //Class symbol in the name bar's right end
+            //corners: TL dagger+atk, TR aspect gem, BL shield+AC, BR heart+life
+            f.atk_icon = Img("AtkIcon", f.root, new Vector2(99, 99), new Vector2(180f * K - 260f, TOPY - 180f * K));
+            f.attack_txt = Txt("Atk", f.root, new Vector2(110, 90), new Vector2(195f * K - 260f, TOPY - 230f * K), 52);
             for (int i = 0; i < 3; i++)
-                f.class_icon_layers[i] = Img("ClassIcon" + i, f.root, new Vector2(52, 52), new Vector2(212f, 200f));
+                f.class_icon_layers[i] = Img("ClassIcon" + i, f.root, new Vector2(79, 79), new Vector2(1427f * K - 260f, TOPY - 156f * K));
             f.class_icon = f.class_icon_layers[0];
-
-            //Stat gems: swords (attack) bottom-left, shield (HP/durability) bottom-right —
-            //LARGE so they read at board distance (user rule)
-            f.atk_icon = Img("AtkIcon", f.root, new Vector2(122, 122), new Vector2(-186f, -180f));
-            f.hp_icon = Img("HpIcon", f.root, new Vector2(128, 128), new Vector2(186f, -180f));
-            f.attack_txt = Txt("Atk", f.root, new Vector2(150, 110), new Vector2(-186f, -134f), 84);
-            f.hp_txt = Txt("HP", f.root, new Vector2(150, 110), new Vector2(186f, -134f), 84);
-            f.attack_txt.gameObject.AddComponent<Outline>().effectDistance = new Vector2(4, -4);
-            f.hp_txt.gameObject.AddComponent<Outline>().effectDistance = new Vector2(4, -4);
-
-            //One-line keyword strip along the bottom, between the gems (cool
-            //grey-white — the old amber read as "yellow text" on tokens)
-            f.keyword_txt = Txt("Keyword", f.root, new Vector2(220, 44), new Vector2(0f, -206f), 27);
-            f.keyword_txt.color = new Color(0.82f, 0.88f, 0.95f);
+            f.block_icon = Img("ArmorIcon", f.root, new Vector2(99, 99), new Vector2(180f * K - 260f, TOPY - 1383f * K));
+            f.block_txt = Txt("Armor", f.root, new Vector2(110, 90), new Vector2(180f * K - 260f, TOPY - 1400f * K), 52);
+            f.hp_icon = Img("HpIcon", f.root, new Vector2(99, 99), new Vector2(1427f * K - 260f, TOPY - 1383f * K));
+            f.hp_txt = Txt("HP", f.root, new Vector2(110, 90), new Vector2(1427f * K - 260f, TOPY - 1400f * K), 52);
+            foreach (Text t in new Text[] { f.attack_txt, f.hp_txt, f.block_txt })
+                t.gameObject.AddComponent<Outline>().effectDistance = new Vector2(3, -3);
 
             return f;
         }
@@ -174,7 +156,7 @@ namespace CCG
                 crows_shield = Resources.Load<Sprite>("Icons/57");
             }
             string frame_name = data.HasTrait("champion") ? "CHAMPION" : (data.team != null ? data.team.id.ToUpper() : "UNIVERSAL");
-            Sprite fr = Resources.Load<Sprite>("Frames/" + frame_name);
+            Sprite fr = Resources.Load<Sprite>(token_mode ? "Frames/TOKEN_FRAME" : "Frames/" + frame_name);
             if (fr == null) fr = Resources.Load<Sprite>("Frames/UNIVERSAL");
             if (fr != null)
             {
@@ -202,9 +184,8 @@ namespace CCG
 
         public void Apply(TcgEngine.CardData data)
         {
-            if (!token_mode)
-                ApplyCrows(data);
-            CardScriptable style = token_mode ? GetStyle(data) : null;
+            ApplyCrows(data); //CROWS skin owns BOTH layouts now
+            CardScriptable style = null; //megapack styles retired
             if (style != null)
             {
                 foreach (UICardImage el in style.UIElementsImage)
@@ -244,9 +225,7 @@ namespace CCG
             }
             LoadRaritySprites();
 
-            //Token border: bright faction color (primitive rect)
-            if (token_mode && data.team != null)
-                frame_bg.color = Color.Lerp(data.team.color, Color.white, 0.25f);
+            //(token frame is the pack sprite now; backdrop tint handled in ApplyCrows)
 
             if (cost_icon != null && (!show_cost || data.type == CardType.Hero))
             {
