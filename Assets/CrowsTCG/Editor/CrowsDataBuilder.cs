@@ -128,6 +128,9 @@ namespace CrowsTCG.EditorTools
             }
             pendingArmor.Clear();
 
+            // every ORIGINAL pack artwork piece is its own card (user ruling)
+            int artworkCards = BuildArtworkCards(teams, rarities, armor, champion, cards);
+
             // starter decks (aspect pairs, LoR model): 2 champs + minions x2 + items
             var deck1 = MakeDeck("starter_occult_might", "Talons of Ruin", new string[] {
                 "champ_occult_cultleader","champ_might_warchief",
@@ -162,7 +165,144 @@ namespace CrowsTCG.EditorTools
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            Debug.Log("CROWS: v0 set built - " + cards.Count + " cards, 2 starter decks, " + fallbackCount + " pack-art fallbacks");
+            Debug.Log("CROWS: v0 set built - " + cards.Count + " cards (" + artworkCards + " from pack artwork), 2 starter decks, " + fallbackCount + " art fallbacks");
+        }
+
+        // ---------- original pack artwork -> cards ----------
+
+        static readonly Dictionary<string, string[]> ADJ = new Dictionary<string, string[]> {
+            {"arcana", new[]{"Whispering","Runebound","Astral","Inkstained","Forgotten"}},
+            {"boreal", new[]{"Drowned","Frostbitten","Tidal","Barnacled","Pale"}},
+            {"divine", new[]{"Radiant","Anointed","Gilded","Vigilant","Solemn"}},
+            {"dusk", new[]{"Moonlit","Veiled","Silent","Waning","Shrouded"}},
+            {"gale", new[]{"Windswept","Screaming","Feathered","Restless","Skyborne"}},
+            {"heat", new[]{"Smoldering","Charred","Molten","Ashen","Blazing"}},
+            {"land", new[]{"Rooted","Mossgrown","Ancient","Thorned","Verdant"}},
+            {"might", new[]{"Bloodied","Ironclad","Scarred","Brutal","Warforged"}},
+            {"occult", new[]{"Cursed","Hollow","Whispered","Blasphemous","Grinning"}},
+            {"prospect", new[]{"Gilded","Hoarding","Glittering","Miserly","Jeweled"}},
+            {"universal", new[]{"Wandering","Weathered","Trusty","Borrowed","Plain"}}
+        };
+        static readonly Dictionary<string, string[]> NOUN = new Dictionary<string, string[]> {
+            {"arcana", new[]{"Tome","Scribe","Cipher","Archivist","Familiar"}},
+            {"boreal", new[]{"Siren","Wreck","Leviathan","Tidecaller","Gull"}},
+            {"divine", new[]{"Herald","Reliquary","Warden","Chorister","Lantern"}},
+            {"dusk", new[]{"Prowler","Phantom","Lullaby","Crescent","Shade"}},
+            {"gale", new[]{"Zephyr","Kestrel","Vagabond","Squall","Piper"}},
+            {"heat", new[]{"Ember","Stoker","Pyre","Cinder","Furnace"}},
+            {"land", new[]{"Warden","Sapling","Tusker","Grovekeeper","Burrower"}},
+            {"might", new[]{"Veteran","Marauder","Banner","Duelist","Vanguard"}},
+            {"occult", new[]{"Effigy","Congregant","Omen","Marionette","Litany"}},
+            {"prospect", new[]{"Appraiser","Vault","Prospector","Tollkeeper","Magpie"}},
+            {"universal", new[]{"Satchel","Blade","Charm","Provision","Tool"}}
+        };
+        static readonly string[] CHAMP_ASPECTS = { "arcana","boreal","divine","dusk","gale","heat","land","might","occult","prospect" };
+
+        static int BuildArtworkCards(Dictionary<string, TeamData> teams, Dictionary<string, RarityData> rarities,
+            TraitData armor, TraitData champion, Dictionary<string, TcgCard> cards)
+        {
+            var jobs = new List<KeyValuePair<string, string>>(); // path -> aspect ("" = derive)
+            foreach (var g in AssetDatabase.FindAssets("t:Sprite", new[] { PACKART }))
+                jobs.Add(new KeyValuePair<string, string>(AssetDatabase.GUIDToAssetPath(g), ""));
+            var pairs = new Dictionary<string, string[]> {
+                {"Assets/CrowsTCG/Art/Aspect_Arcana_Occult", new[]{"arcana","occult"}},
+                {"Assets/CrowsTCG/Art/Aspect_Divine_Occult", new[]{"divine","occult"}},
+                {"Assets/CrowsTCG/Art/Aspect_Prospection_Boreal", new[]{"prospect","boreal"}}
+            };
+            int count = 0, champIdx = 0;
+            foreach (var job in jobs)
+                count += ArtworkCard(job.Key, PrefixAspect(Path.GetFileNameWithoutExtension(job.Key)), teams, rarities, armor, champion, cards, ref champIdx);
+            foreach (var kv in pairs)
+            {
+                int i = 0;
+                foreach (var g in AssetDatabase.FindAssets("t:Sprite", new[] { kv.Key }))
+                {
+                    string p = AssetDatabase.GUIDToAssetPath(g);
+                    count += ArtworkCard(p, kv.Value[i % 2], teams, rarities, armor, champion, cards, ref champIdx);
+                    i++;
+                }
+            }
+            return count;
+        }
+
+        static string PrefixAspect(string name)
+        {
+            switch (char.ToUpper(name[0]))
+            {
+                case 'A': return "arcana";
+                case 'C': return "champion";
+                case 'D': return "dusk";
+                case 'H': return "heat";
+                case 'I': return "universal";
+                case 'L': return "land";
+                case 'M': return "might";
+                default: return "universal";
+            }
+        }
+
+        static int ArtworkCard(string path, string aspect, Dictionary<string, TeamData> teams, Dictionary<string, RarityData> rarities,
+            TraitData armor, TraitData champion, Dictionary<string, TcgCard> cards, ref int champIdx)
+        {
+            string fname = Path.GetFileNameWithoutExtension(path);
+            string folder = Path.GetFileName(Path.GetDirectoryName(path));
+            string id = ("art_" + folder + "_" + fname).ToLower().Replace(" ", "_").Replace("-", "_");
+            if (cards.ContainsKey(id)) return 0;
+
+            bool isChamp = aspect == "champion";
+            if (isChamp) { aspect = CHAMP_ASPECTS[champIdx % CHAMP_ASPECTS.Length]; champIdx++; }
+            bool isItem = aspect == "universal" && fname.ToUpper().StartsWith("I");
+
+            int h = Mathf.Abs(id.GetHashCode());
+            string title = ADJ[aspect][h % 5] + " " + NOUN[aspect][(h / 5) % 5];
+
+            CardType type;
+            RarityData rarity;
+            int cost, atk, hp, ac;
+            if (isChamp)
+            {
+                type = CardType.Character; rarity = rarities["mythic"];
+                cost = 3; atk = 3 + h % 2; hp = 7 + h % 3; ac = 2 + h % 2;
+            }
+            else if (isItem)
+            {
+                type = CardType.Equipment; rarity = rarities[h % 2 == 0 ? "common" : "uncommon"];
+                cost = 1; atk = h % 3; hp = (h / 3) % 3; ac = 0;
+            }
+            else if (h % 3 == 0)
+            {
+                type = CardType.Spell; rarity = rarities[h % 2 == 0 ? "uncommon" : "rare"];
+                cost = 1 + h % 2; atk = 0; hp = 0; ac = 0;
+            }
+            else
+            {
+                type = CardType.Character; rarity = rarities[new[] { "common", "common", "uncommon", "rare" }[h % 4]];
+                cost = 1 + h % 3; atk = 1 + h % 3; hp = 1 + (h / 7) % 4; ac = h % 3;
+            }
+
+            string apath = ROOT + "/Cards/" + id + ".asset";
+            var card = AssetDatabase.LoadAssetAtPath<TcgCard>(apath);
+            if (card == null)
+            {
+                card = ScriptableObject.CreateInstance<TcgCard>();
+                AssetDatabase.CreateAsset(card, apath);
+            }
+            card.id = id;
+            card.title = title;
+            card.type = type;
+            card.team = teams[aspect];
+            card.rarity = rarity;
+            card.mana = cost;
+            card.attack = atk;
+            card.hp = hp;
+            card.availability = CardAvailability.Collectible;
+            var art = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            card.art_full = art;
+            card.art_board = art;
+            if (isChamp) card.traits = new TraitData[] { champion };
+            if (ac > 0) card.stats = new TraitStat[] { new TraitStat { trait = armor, value = ac } };
+            EditorUtility.SetDirty(card);
+            cards[id] = card;
+            return 1;
         }
 
         // ---------- helpers ----------
