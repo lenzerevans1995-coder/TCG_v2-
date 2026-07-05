@@ -71,7 +71,8 @@ namespace TcgEngine.UI
             UserDeckData udeck = new UserDeckData();
             udeck.tid = deck_id + "_" + GameTool.GenerateRandomID(4, 7); //Add random id to differentiate from the starter deck if edited
             udeck.title = deck.title;
-            udeck.hero = new UserCardData(deck.hero, VariantData.GetDefault());
+            //CROWS-EDIT: champions are deck cards, decks have no hero
+            udeck.hero = deck.hero != null ? new UserCardData(deck.hero, VariantData.GetDefault()) : null;
 
             List<UserCardData> cards = new List<UserCardData>();
             foreach (CardData card in deck.cards)

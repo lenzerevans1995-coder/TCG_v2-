@@ -180,6 +180,14 @@ namespace CCG
                 if (pc.GetComponent<CCGPackCardSkin>() == null)
                     pc.gameObject.AddComponent<CCGPackCardSkin>();
             }
+
+            //CROWS battlefield tokens: dress every kit BoardCard with the pack
+            //square frame + corner stats (world-space SpriteRenderers)
+            foreach (TcgEngine.Client.BoardCard bc in Object.FindObjectsByType<TcgEngine.Client.BoardCard>(FindObjectsSortMode.None))
+            {
+                if (bc.GetComponent<CrowsBoardToken>() == null)
+                    bc.gameObject.AddComponent<CrowsBoardToken>();
+            }
         }
     }
 

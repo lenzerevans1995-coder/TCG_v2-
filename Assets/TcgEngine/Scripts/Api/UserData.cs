@@ -378,6 +378,10 @@ namespace TcgEngine
         {
             serializer.SerializeValue(ref tid);
             serializer.SerializeValue(ref title);
+            //CROWS-EDIT: decks have no hero (champions are deck cards) — null hero
+            //crashed netcode serialization and hung every match at Connecting
+            if (hero == null)
+                hero = new UserCardData();
             serializer.SerializeValue(ref hero);
             NetworkTool.NetSerializeArray(serializer, ref cards);
         }

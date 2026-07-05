@@ -72,8 +72,36 @@ namespace CCG
                     yield return null;
             }
 
+            //CROWS: fresh accounts get the starter decks immediately — the Heat menu
+            //has no starter-selection popup, and SOLO with no deck hangs at Connecting
+            GrantStartersIfNeeded();
+
             RefreshProfile();
             RefreshDeckBox();
+        }
+
+        private void GrantStartersIfNeeded()
+        {
+            UserData udata = Authenticator.Get().UserData;
+            if (udata == null || (udata.decks != null && udata.decks.Length > 0))
+                return;
+
+            foreach (DeckData deck in GameplayData.Get().starter_decks)
+            {
+                if (deck == null) continue;
+                UserDeckData udeck = new UserDeckData();
+                udeck.tid = deck.id + "_" + GameTool.GenerateRandomID(4, 7);
+                udeck.title = deck.title;
+                udeck.hero = deck.hero != null ? new UserCardData(deck.hero, VariantData.GetDefault()) : null;
+                List<UserCardData> cards = new List<UserCardData>();
+                foreach (TcgEngine.CardData card in deck.cards)
+                    cards.Add(new UserCardData(card, VariantData.GetDefault()));
+                udeck.cards = cards.ToArray();
+                udata.AddDeck(udeck);
+                udata.AddReward(udeck.tid);
+            }
+            var save = Authenticator.Get().SaveUserData();
+            Debug.Log("CROWS: granted " + GameplayData.Get().starter_decks.Length + " starter decks to fresh account " + udata.username);
         }
 
         private UserData UData { get { return Authenticator.Get().UserData; } }

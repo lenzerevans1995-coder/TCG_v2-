@@ -37,7 +37,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 050c1014f9c56f2489c817df0e401797, type: 2}
   - {fileID: 11400000, guid: 06381eed176a6a749924b0eca83d5298, type: 2}
   arena_list:
-  - CCG_Game3D
+  - Game
   test_deck: {fileID: 11400000, guid: 050c1014f9c56f2489c817df0e401797, type: 2}
   test_deck_ai: {fileID: 11400000, guid: 06381eed176a6a749924b0eca83d5298, type: 2}
   ai_vs_ai: 0
