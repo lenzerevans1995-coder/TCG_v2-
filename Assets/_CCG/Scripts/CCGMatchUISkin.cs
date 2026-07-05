@@ -12,10 +12,10 @@ namespace CCG
     /// </summary>
     public class CCGMatchUISkin : MonoBehaviour
     {
-        private static readonly Color FILL = new Color(0.063f, 0.094f, 0.149f, 0.97f);
-        private static readonly Color ACCENT = new Color(0.208f, 0.835f, 0.949f);
-        private static readonly Color NEGATIVE = new Color(0.898f, 0.282f, 0.302f);
-        private static readonly Color TEXTC = new Color(0.949f, 0.961f, 0.976f);
+        private static readonly Color FILL = new Color(0.098f, 0.088f, 0.070f, 0.97f);
+        private static readonly Color ACCENT = new Color(0.788f, 0.659f, 0.298f);
+        private static readonly Color NEGATIVE = new Color(0.557f, 0.122f, 0.173f);
+        private static readonly Color TEXTC = new Color(0.910f, 0.863f, 0.753f);
 
         private float timer = 0f;
         private readonly HashSet<Button> done = new HashSet<Button>();

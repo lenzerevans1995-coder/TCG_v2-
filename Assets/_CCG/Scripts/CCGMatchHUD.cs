@@ -31,13 +31,13 @@ namespace CCG
         private const float TW = 960f, TH = 540f; //mockup template space
         private const float CHIP_R = 2.4f;        //ppu mult: small corner radius, never a pill
 
-        private static readonly Color FILL = new Color(0.063f, 0.094f, 0.149f, 0.97f);
-        private static readonly Color PANEL = new Color(0.055f, 0.082f, 0.133f, 0.97f);
-        private static readonly Color DARK = new Color(0.03f, 0.05f, 0.08f, 0.95f);
-        private static readonly Color ACCENT = new Color(0.208f, 0.835f, 0.949f);
-        private static readonly Color NEGATIVE = new Color(0.898f, 0.282f, 0.302f);
-        private static readonly Color TEXTC = new Color(0.949f, 0.961f, 0.976f);
-        private static readonly Color DIM = new Color(0.353f, 0.400f, 0.471f);
+        private static readonly Color FILL = new Color(0.098f, 0.088f, 0.070f, 0.97f);
+        private static readonly Color PANEL = new Color(0.086f, 0.078f, 0.061f, 0.97f);
+        private static readonly Color DARK = new Color(0.055f, 0.049f, 0.039f, 0.95f);
+        private static readonly Color ACCENT = new Color(0.788f, 0.659f, 0.298f);
+        private static readonly Color NEGATIVE = new Color(0.557f, 0.122f, 0.173f);
+        private static readonly Color TEXTC = new Color(0.910f, 0.863f, 0.753f);
+        private static readonly Color DIM = new Color(0.471f, 0.435f, 0.353f);
 
         private class EquipChip
         {
