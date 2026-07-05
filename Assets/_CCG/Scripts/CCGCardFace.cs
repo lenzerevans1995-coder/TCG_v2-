@@ -64,6 +64,10 @@ namespace CCG
 
             f.art_mask = Img("ArtMask", f.root, new Vector2(f.art_win_w, f.art_win_h), new Vector2(899 * K - 309f, TOP - 775 * K));
             f.art_mask.gameObject.AddComponent<Mask>().showMaskGraphic = false;
+            //backdrop: pack Artwork pieces are figures on TRANSPARENT ground — they
+            //need a dark stage behind them or the window reads empty
+            f.frame_bg = Img("ArtBackdrop", f.art_mask.rectTransform, new Vector2(f.art_win_w, f.art_win_h), Vector2.zero);
+            f.frame_bg.color = new Color(0.09f, 0.10f, 0.11f, 1f);
             f.art = Img("Art", f.art_mask.rectTransform, new Vector2(f.art_win_w, f.art_win_h), Vector2.zero);
             f.frame_border = Img("FrontFrame", f.root, new Vector2(618, 865), Vector2.zero);
 
@@ -192,6 +196,8 @@ namespace CCG
             if (data.team != null && data.team.icon != null)
                 foreach (Image layer in class_icon_layers)
                     if (layer != null) layer.sprite = data.team.icon;
+            if (frame_bg != null && data.team != null) //art backdrop takes a whisper of aspect color
+                frame_bg.color = Color.Lerp(new Color(0.07f, 0.075f, 0.08f, 1f), data.team.color, 0.15f);
         }
 
         public void Apply(TcgEngine.CardData data)
@@ -255,7 +261,15 @@ namespace CCG
                 //the old token STRETCH visibly squashed portrait art
                 float sa = art.sprite.rect.width / art.sprite.rect.height;
                 float aw, ah;
-                if (sa > art_win_w / art_win_h)
+                //pack Artwork = transparent-ground figures (no "_v" in name): CONTAIN so
+                //the whole figure stands on the backdrop; generated squares COVER-fill
+                bool figure = !token_mode && !art.sprite.name.Contains("_v");
+                if (figure)
+                {
+                    if (sa > art_win_w / art_win_h) { aw = art_win_w * 0.94f; ah = aw / sa; }
+                    else { ah = art_win_h * 0.94f; aw = ah * sa; }
+                }
+                else if (sa > art_win_w / art_win_h)
                 {
                     ah = art_win_h;
                     aw = ah * sa;
