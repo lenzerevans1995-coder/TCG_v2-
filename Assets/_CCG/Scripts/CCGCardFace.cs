@@ -269,15 +269,25 @@ namespace CCG
                     if (sa > art_win_w / art_win_h) { aw = art_win_w * 0.94f; ah = aw / sa; }
                     else { ah = art_win_h * 0.94f; aw = ah * sa; }
                 }
-                else if (sa > art_win_w / art_win_h)
-                {
-                    ah = art_win_h;
-                    aw = ah * sa;
-                }
                 else
                 {
-                    aw = art_win_w;
-                    ah = aw / sa;
+                    if (sa > art_win_w / art_win_h)
+                    {
+                        ah = art_win_h;
+                        aw = ah * sa;
+                    }
+                    else
+                    {
+                        aw = art_win_w;
+                        ah = aw / sa;
+                    }
+                    if (!token_mode)
+                    {
+                        //generated pieces carry their own drawn borders: overscan so those
+                        //edges slide UNDER the frame (mask clips them) instead of showing
+                        aw *= 1.10f;
+                        ah *= 1.10f;
+                    }
                 }
                 art.rectTransform.sizeDelta = new Vector2(aw, ah);
                 //Tokens crop portrait art in a landscape window: bias toward the
