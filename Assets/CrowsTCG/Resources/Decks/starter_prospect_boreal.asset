@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ecef176d27eb040a9770e0eefea2ec, type: 3}
+  m_Name: starter_prospect_boreal
+  m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.DeckData
+  id: starter_prospect_boreal
+  title: Gilded Tide
+  hero: {fileID: 0}
+  cards:
+  - {fileID: 11400000, guid: e25269824bf8e0e45bd5b4051b9475e1, type: 2}
+  - {fileID: 11400000, guid: bc92ce752e3c07a4e9363faf7f215fa1, type: 2}
+  - {fileID: 11400000, guid: 39507450c14bf754eba996bef5ed6843, type: 2}
+  - {fileID: 11400000, guid: 39507450c14bf754eba996bef5ed6843, type: 2}
+  - {fileID: 11400000, guid: 2b5d7a455be09d14d8613296b4f6cb3e, type: 2}
+  - {fileID: 11400000, guid: 2b5d7a455be09d14d8613296b4f6cb3e, type: 2}
+  - {fileID: 11400000, guid: 8442fa6d8e12e3744b929ad761907663, type: 2}
+  - {fileID: 11400000, guid: 8442fa6d8e12e3744b929ad761907663, type: 2}
+  - {fileID: 11400000, guid: 535d9989d326c964aa8d464e7e0fafe9, type: 2}
+  - {fileID: 11400000, guid: 535d9989d326c964aa8d464e7e0fafe9, type: 2}
+  - {fileID: 11400000, guid: 5cefe23389f2dcc45a93f0ca46be957f, type: 2}
+  - {fileID: 11400000, guid: 5cefe23389f2dcc45a93f0ca46be957f, type: 2}
+  - {fileID: 11400000, guid: 611a5df39236b7347ab6c24840a4acca, type: 2}
+  - {fileID: 11400000, guid: 611a5df39236b7347ab6c24840a4acca, type: 2}
+  - {fileID: 11400000, guid: 3b998e991072edd418467362b786a6ea, type: 2}
+  - {fileID: 11400000, guid: 3b998e991072edd418467362b786a6ea, type: 2}
+  - {fileID: 11400000, guid: 316bd5e7f9844434584d4b45de045884, type: 2}
+  - {fileID: 11400000, guid: bef6aca92488f984e80272b2897c94bd, type: 2}
+  - {fileID: 11400000, guid: 8b35e0c072d0a634d92897c21672feda, type: 2}
+  - {fileID: 11400000, guid: 8f519248ed501ae449cb4e91be4f54e2, type: 2}

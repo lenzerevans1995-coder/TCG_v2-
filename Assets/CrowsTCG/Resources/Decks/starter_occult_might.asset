@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ecef176d27eb040a9770e0eefea2ec, type: 3}
+  m_Name: starter_occult_might
+  m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.DeckData
+  id: starter_occult_might
+  title: Talons of Ruin
+  hero: {fileID: 0}
+  cards:
+  - {fileID: 11400000, guid: 2e0fca47bdf192947992a9d7a7ceb64f, type: 2}
+  - {fileID: 11400000, guid: a173d46559fe9f94798bd142bd2f13c9, type: 2}
+  - {fileID: 11400000, guid: 58fc68dc74c5826468a6bdda2b5fb789, type: 2}
+  - {fileID: 11400000, guid: 58fc68dc74c5826468a6bdda2b5fb789, type: 2}
+  - {fileID: 11400000, guid: cebfbc04a2e267d49a4913b98c084992, type: 2}
+  - {fileID: 11400000, guid: cebfbc04a2e267d49a4913b98c084992, type: 2}
+  - {fileID: 11400000, guid: cea3453c02617eb4fa9e7ef830a5d92f, type: 2}
+  - {fileID: 11400000, guid: cea3453c02617eb4fa9e7ef830a5d92f, type: 2}
+  - {fileID: 11400000, guid: 47a41a4b519fd51469e5e901fc3d5576, type: 2}
+  - {fileID: 11400000, guid: 47a41a4b519fd51469e5e901fc3d5576, type: 2}
+  - {fileID: 11400000, guid: b9fb2f7a716f7804ca0a4e78434ba722, type: 2}
+  - {fileID: 11400000, guid: b9fb2f7a716f7804ca0a4e78434ba722, type: 2}
+  - {fileID: 11400000, guid: 5497ed12af3abb84881be3d5c00d5747, type: 2}
+  - {fileID: 11400000, guid: 5497ed12af3abb84881be3d5c00d5747, type: 2}
+  - {fileID: 11400000, guid: e267755415ff958488910f9964be9ce1, type: 2}
+  - {fileID: 11400000, guid: e267755415ff958488910f9964be9ce1, type: 2}
+  - {fileID: 11400000, guid: 45d7221b85682b045b556030b8167ff8, type: 2}
+  - {fileID: 11400000, guid: 2aa851e2a7870774eb28126e318eac55, type: 2}
+  - {fileID: 11400000, guid: 5b59c72fd59ddf7499f8332ec84f3574, type: 2}
+  - {fileID: 11400000, guid: f29745330060bed4ca5841f0f19fa4ad, type: 2}

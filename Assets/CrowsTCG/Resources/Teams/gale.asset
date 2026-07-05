@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e41d6c5fb036a40bc0a37bfe1f52ac, type: 3}
+  m_Name: gale
+  m_EditorClassIdentifier: Assembly-CSharp::TcgEngine.TeamData
+  id: gale
+  title: Gale
+  icon: {fileID: 21300000, guid: 02d25ade3e82cad47a178b8a8c809f8a, type: 3}
+  color: {r: 0.54901963, g: 0.7882353, b: 0.03137255, a: 1}
