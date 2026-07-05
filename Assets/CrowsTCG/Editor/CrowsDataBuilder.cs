@@ -435,8 +435,12 @@ namespace CrowsTCG.EditorTools
             card.hp = hp;
             card.availability = CardAvailability.Collectible;
 
-            var art = AssetDatabase.LoadAssetAtPath<Sprite>(GEN + "/" + id + "_v1_a.png");
-            if (art == null) art = AssetDatabase.LoadAssetAtPath<Sprite>(GEN + "/" + id + "_v2_a.png");
+            //prefer the LATEST render (highest letter = newest style pass), v1 over v2
+            Sprite art = null;
+            for (char c = 'f'; c >= 'a' && art == null; c--)
+                art = AssetDatabase.LoadAssetAtPath<Sprite>(GEN + "/" + id + "_v1_" + c + ".png");
+            for (char c = 'f'; c >= 'a' && art == null; c--)
+                art = AssetDatabase.LoadAssetAtPath<Sprite>(GEN + "/" + id + "_v2_" + c + ".png");
             if (art == null) { art = FallbackArt(team.id, id); fallbackCount++; }
             card.art_full = art;
             card.art_board = art;

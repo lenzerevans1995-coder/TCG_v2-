@@ -45,8 +45,11 @@ def main(apply=False):
             if line not in names:
                 skipped.append(fn + "  (line %d not in manifest)" % line)
                 continue
-            dest_name = "%s_%s.png" % (names[line], "abcd"[var - 1] if 1 <= var <= 4 else "x%d" % var)
-            plan.append((fn, dest_name))
+            base = names[line]
+            suffix = "abcd"[var - 1] if 1 <= var <= 4 else "e"
+            while base + "_" + suffix in existing or any(d == base + "_" + suffix + ".png" for _, d in plan):
+                suffix = chr(ord(suffix) + 1)  # re-render of an existing name: next letter
+            plan.append((fn, base + "_" + suffix + ".png"))
             continue
 
         ms = PAT_SNIPPET.match(fn)
